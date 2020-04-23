@@ -1,0 +1,17 @@
+<div class="container">
+  <ul *ngFor="let todo of todos; index as id">
+    <li [class]="this.todo.completed ? 'todo-completed' : 'todo'">
+      {{ todo.title }}
+    </li>
+    <button (click)="done(id)">
+      {{ this.todo.completed ? "undone" : "done" }}
+    </button>
+    <button (click)="remove(id)">del</button>
+  </ul>
+  <input type="text" (input)="onChange($event)" />
+  <button (click)="addTodo()">add</button>
+  <!-- <h1>done Todos</h1>
+    <li>{{ doneTodos() }}</li>
+    <h1>unDone todos</h1>
+    <li>{{ unDoneTodos() }}</li> -->
+</div>

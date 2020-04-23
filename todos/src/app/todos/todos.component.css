@@ -1,0 +1,16 @@
+.todo {
+  background-color: lightcoral;
+  width: 250px;
+}
+
+.todo-completed {
+  background-color: lightcoral;
+  width: 250px;
+  text-decoration: line-through;
+}
+
+.container {
+  margin-left: 10px;
+  width: 290px;
+  background-color: lightgreen;
+}
