@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TodosServiceService } from '../todos-service.service';
+// import { ManagerService } from '../manager.service';
 
 @Component({
   selector: 'app-done-todos',
@@ -7,11 +8,14 @@ import { TodosServiceService } from '../todos-service.service';
   styleUrls: ['./done-todos.component.css'],
 })
 export class DoneTodosComponent implements OnInit {
-  public todos;
+  // public todos;
+  @Input() parentData;
+
   constructor(private _TodosService: TodosServiceService) {}
-  doneList = [' '];
+
+  doneList = [];
   doneTodos() {
-    for (let todo of this.todos) {
+    for (let todo of this.parentData) {
       if (todo.completed == true) {
         this.doneList.push(todo.title);
       }
@@ -19,6 +23,8 @@ export class DoneTodosComponent implements OnInit {
     return this.doneList;
   }
   ngOnInit() {
-    this._TodosService.getTodos().subscribe((data) => (this.todos = data));
+    // this.todos = this._TodosService
+    //   .getTodos()
+    //   .subscribe((data) => (this.todos = data));
   }
 }

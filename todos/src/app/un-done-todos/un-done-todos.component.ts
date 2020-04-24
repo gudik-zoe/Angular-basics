@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TodosServiceService } from '../todos-service.service';
+// import { ManagerService } from '../manager.service';
 
 @Component({
   selector: 'app-un-done-todos',
@@ -7,18 +8,23 @@ import { TodosServiceService } from '../todos-service.service';
   styleUrls: ['./un-done-todos.component.css'],
 })
 export class UnDoneTodosComponent implements OnInit {
+  @Input() parentData;
+  // public todos;
   constructor(private _TodosService: TodosServiceService) {}
-  public todos;
-  unDoneList = [];
-  unDoneTodos() {
-    for (let todo of this.todos) {
-      if (todo.completed !== true) {
-        this.unDoneList.push(todo.title);
+
+  unDoneTodos = [];
+  function() {
+    for (let todo of this.parentData) {
+      if (todo.completed == false) {
+        this.unDoneTodos.push(todo.title);
       }
     }
-    return this.unDoneList;
+    return this.unDoneTodos;
   }
+
   ngOnInit() {
-    this._TodosService.getTodos().subscribe((data) => (this.todos = data));
+    // this.todos = this._TodosService
+    //   .getTodos()
+    //   .subscribe((data) => (this.todos = data));
   }
 }

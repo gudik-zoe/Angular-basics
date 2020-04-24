@@ -1,17 +1,26 @@
 <div class="container">
-  <ul *ngFor="let todo of todos; index as id">
+  <!-- <ul *ngFor="let todo of todos; index as id">
     <li [class]="this.todo.completed ? 'todo-completed' : 'todo'">
-      {{ todo.title }}
+      {{ todo.title }} , {{ todo.id }}
     </li>
     <button (click)="done(id)">
       {{ this.todo.completed ? "undone" : "done" }}
+      done
     </button>
     <button (click)="remove(id)">del</button>
   </ul>
+  <h2>{{ doneTodos() }}</h2> -->
+  <!-- <input type="text" (input)="onChange($event)" />
+  <button (click)="addTodo()">add</button> -->
+  <ul *ngFor="let todo of parentData; index as id">
+    <li [class]="this.todo.completed ? 'todo-completed' : 'todo'">
+      {{ todo.title }}
+      <button (click)="done(id)">
+        {{ this.todo.completed ? "undone" : "done" }}
+      </button>
+      <button (click)="remove(id)">x</button>
+    </li>
+  </ul>
   <input type="text" (input)="onChange($event)" />
   <button (click)="addTodo()">add</button>
-  <!-- <h1>done Todos</h1>
-    <li>{{ doneTodos() }}</li>
-    <h1>unDone todos</h1>
-    <li>{{ unDoneTodos() }}</li> -->
 </div>

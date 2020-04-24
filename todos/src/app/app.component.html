@@ -1,8 +1,8 @@
 <h2>Todo app</h2>
 <!-- <a><h3>done Todos</h3></a> -->
 <!-- <a><h3>unDone todos</h3></a> -->
-<app-todos></app-todos>
-<nav>
+<app-todos [parentData]="todos"></app-todos>
+<!-- <nav>
   <a routerLink="/done-todos">
     DoneTodos
   </a>
@@ -10,7 +10,7 @@
   <a routerLink="/un-done-todos">
     UnDoneTodos
   </a>
-</nav>
-<!-- <app-done-todos></app-done-todos>
-<app-un-done-todos></app-un-done-todos> -->
-<router-outlet></router-outlet>
+</nav> -->
+<app-done-todos [parentData]="doneTodos()"></app-done-todos>
+<app-un-done-todos [parentData]="unDoneTodos()"></app-un-done-todos>
+<!-- <router-outlet></router-outlet> -->

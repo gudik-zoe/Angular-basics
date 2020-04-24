@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { TodosServiceService } from '../todos-service.service';
 
@@ -8,63 +8,42 @@ import { TodosServiceService } from '../todos-service.service';
   styleUrls: ['./todos.component.css'],
 })
 export class TodosComponent implements OnInit {
+  // public todos;
   constructor(private _TodosService: TodosServiceService) {}
-  public todos = [];
-  // public doneTodos = [];
-  // public unDoneTodos = [];
+  @Input() parentData;
 
-  // organizer() {
-  //   for (let todo of this.todos) {
-  //     if (todo.completed !== true) {
-  //       return this.unDoneTodos.push(todo.title);
-  //       console.log(this.unDoneTodos);
-  //     } else if (todo.completed == true) {
-  //       return this.doneTodos.push(todo.title);
-  //       console.log(this.doneTodos);
-  //     }
-  //   }
-  // }
-  // listDone = ' ';
-  // listUnDone = ' ';
-  // doneTodos() {
+  hello = 4;
+
+  ngOnInit() {
+    // this.todos = this._TodosService
+    //   .getTodos()
+    //   .subscribe((data) => (this.todos = data));
+  }
+  input;
+  // zero = '';
+  // // idCreator = this.todos.length + 1;
+  // nakel = () => {
   //   for (let todo of this.todos) {
   //     if (todo.completed == true) {
-  //       this.listDone += todo.title;
+  //       return todo.title;
   //     }
   //   }
-  //   return this.listDone;
-  // }
-  // unDoneTodos() {
-  //   for (let todo of this.todos) {
-  //     if (todo.completed !== true) {
-  //       this.listUnDone += todo.title;
-  //     }
-  //   }
-  //   return this.listUnDone;
-  // }
-
-  input;
-
-  idCreator = this.todos.length + 1;
-
+  // };
   done(id) {
-    this.todos[id].completed = !this.todos[id].completed;
+    this.parentData[id].completed = !this.parentData[id].completed;
   }
   remove(id) {
-    this.todos.splice(id, 1);
+    this.parentData.splice(id, 1);
   }
   onChange(event: Event) {
     this.input = (<HTMLInputElement>event.target).value;
   }
+
   addTodo() {
-    this.todos.push({
+    this.parentData.push({
       title: this.input,
       completed: false,
-      id: this.idCreator++,
+      id: this.hello++,
     });
-  }
-
-  ngOnInit() {
-    this._TodosService.getTodos().subscribe((data) => (this.todos = data));
   }
 }
