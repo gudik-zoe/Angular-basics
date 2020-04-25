@@ -10,9 +10,10 @@ import { TodosServiceService } from './todos-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DoneTodosComponent } from './done-todos/done-todos.component';
 import { UnDoneTodosComponent } from './un-done-todos/un-done-todos.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
-  declarations: [AppComponent, TodosComponent, routingComponents, DoneTodosComponent, UnDoneTodosComponent],
+  declarations: [AppComponent, TodosComponent, routingComponents, DoneTodosComponent, UnDoneTodosComponent, ListComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [TodosServiceService],
   bootstrap: [AppComponent],

@@ -12,15 +12,15 @@ export class UnDoneTodosComponent implements OnInit {
   // public todos;
   constructor(private _TodosService: TodosServiceService) {}
 
-  unDoneTodos = [];
-  function() {
-    for (let todo of this.parentData) {
-      if (todo.completed == false) {
-        this.unDoneTodos.push(todo.title);
-      }
-    }
-    return this.unDoneTodos;
-  }
+  // unDoneTodos = [];
+  // function() {
+  //   for (let todo of this.parentData) {
+  //     if (todo.completed == false) {
+  //       this.unDoneTodos.push(todo.title);
+  //     }
+  //   }
+  //   return this.unDoneTodos;
+  // }
 
   ngOnInit() {
     // this.todos = this._TodosService

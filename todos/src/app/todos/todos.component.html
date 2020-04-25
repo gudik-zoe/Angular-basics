@@ -12,7 +12,7 @@
   <h2>{{ doneTodos() }}</h2> -->
   <!-- <input type="text" (input)="onChange($event)" />
   <button (click)="addTodo()">add</button> -->
-  <ul *ngFor="let todo of parentData; index as id">
+  <ul *ngFor="let todo of todos; index as id">
     <li [class]="this.todo.completed ? 'todo-completed' : 'todo'">
       {{ todo.title }}
       <button (click)="done(id)">
@@ -23,4 +23,7 @@
   </ul>
   <input type="text" (input)="onChange($event)" />
   <button (click)="addTodo()">add</button>
+  <app-done-todos [parentData]="doneTodos()"></app-done-todos>
+  <app-un-done-todos [parentData]="unDoneTodos()"></app-un-done-todos>
+  <a routerLink="/list"> <i>shopping_cart</i>Checkout </a>
 </div>

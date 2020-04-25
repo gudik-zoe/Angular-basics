@@ -13,15 +13,15 @@ export class DoneTodosComponent implements OnInit {
 
   constructor(private _TodosService: TodosServiceService) {}
 
-  doneList = [];
-  doneTodos() {
-    for (let todo of this.parentData) {
-      if (todo.completed == true) {
-        this.doneList.push(todo.title);
-      }
-    }
-    return this.doneList;
-  }
+  // doneList = [];
+  // doneTodos() {
+  //   for (let todo of this.parentData) {
+  //     if (todo.completed == true) {
+  //       this.doneList.push(todo.title);
+  //     }
+  //   }
+  //   return this.doneList;
+  // }
   ngOnInit() {
     // this.todos = this._TodosService
     //   .getTodos()

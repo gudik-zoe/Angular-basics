@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { TodosServiceService } from '../todos-service.service';
+import { OrganizerServiceService } from '../organizer-service.service';
 
 @Component({
   selector: 'app-todos',
@@ -8,18 +9,40 @@ import { TodosServiceService } from '../todos-service.service';
   styleUrls: ['./todos.component.css'],
 })
 export class TodosComponent implements OnInit {
-  // public todos;
-  constructor(private _TodosService: TodosServiceService) {}
-  @Input() parentData;
+  public todos;
+  constructor(
+    private _TodosService: TodosServiceService,
+    private _OrganizerService: OrganizerServiceService
+  ) {}
+  // @Input() parentData;
 
   hello = 4;
 
   ngOnInit() {
-    // this.todos = this._TodosService
-    //   .getTodos()
-    //   .subscribe((data) => (this.todos = data));
+    this.todos = this._TodosService
+      .getTodos()
+      .subscribe((data) => (this.todos = data));
   }
   input;
+  doneTodos() {
+    let list = [];
+    for (let todo of this.todos) {
+      if (todo.completed == true) {
+        list.push(todo.title);
+      }
+    }
+    return list;
+  }
+
+  unDoneTodos() {
+    let otherList = [];
+    for (let todo of this.todos) {
+      if (todo.completed == false) {
+        otherList.push(todo.title);
+      }
+    }
+    return otherList;
+  }
   // zero = '';
   // // idCreator = this.todos.length + 1;
   // nakel = () => {
@@ -30,17 +53,26 @@ export class TodosComponent implements OnInit {
   //   }
   // };
   done(id) {
-    this.parentData[id].completed = !this.parentData[id].completed;
+    this.todos[id].completed = !this.todos[id].completed;
+    this._OrganizerService.addToDone(id);
   }
+  // addToDone(todo) {
+  //   this._OrganizerService.addToDone(todo);
+  // }
+
+  addToUnDoneTodos(todo) {
+    this._OrganizerService.addToUnDoneTodos(todo);
+  }
+
   remove(id) {
-    this.parentData.splice(id, 1);
+    this.todos.splice(id, 1);
   }
   onChange(event: Event) {
     this.input = (<HTMLInputElement>event.target).value;
   }
 
   addTodo() {
-    this.parentData.push({
+    this.todos.push({
       title: this.input,
       completed: false,
       id: this.hello++,
