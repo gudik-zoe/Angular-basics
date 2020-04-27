@@ -1,4 +1,4 @@
-<button (click)="checker()">Reminder</button>
+<button (click)="checker()">{{ show ? "Reminder on" : "Reminder off" }}</button>
 <div [class]="show ? 'show' : 'hide'">
   <div class="container" *ngFor="let todo of todos; let i = index">
     <p *ngIf="todo.completed == false">you still have :{{ todo.title }}</p>
