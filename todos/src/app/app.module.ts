@@ -1,21 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodosComponent } from './todos/todos.component';
+
 import { TodosServiceService } from './todos-service.service';
-// import { UnDoneTodosComponent } from './un-done-todos/un-done-todos.component';
-// import { DoneTodosComponent } from './done-todos/done-todos.component';
+
 import { HttpClientModule } from '@angular/common/http';
-import { DoneTodosComponent } from './done-todos/done-todos.component';
-import { UnDoneTodosComponent } from './un-done-todos/un-done-todos.component';
-import { ListComponent } from './list/list.component';
+import { HeaderComponent } from './header/header.component';
+// import { DoneTodosComponent } from './done-todos/done-todos.component';
+// import { UnDoneTodosComponent } from './un-done-todos/un-done-todos.component';
+import { ManagerComponent } from './manager/manager.component';
+import { CheckerComponent } from './checker/checker.component';
 
 @NgModule({
-  declarations: [AppComponent, TodosComponent, routingComponents, DoneTodosComponent, UnDoneTodosComponent, ListComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    // // DoneTodosComponent,
+    // // UnDoneTodosComponent,
+
+    ManagerComponent,
+    CheckerComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [TodosServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+// routingComponentsroutingComponents

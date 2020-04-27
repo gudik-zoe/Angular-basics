@@ -1,0 +1,14 @@
+<br />
+<div *ngFor="let todo of todos; let id = index">
+  <li [class]="todo.completed ? 'done' : 'undone'">
+    {{ todo.title }}
+    <button (click)="done(id)">{{ todo.completed ? "undone" : "done" }}</button>
+    <button (click)="remove(id)">del</button>
+  </li>
+</div>
+<input type="text" placeholder="add a todo" [(ngModel)]="input" />
+
+<button [disabled]="this.input == null ? true : false" (click)="add()">
+  add
+</button>
+<app-checker [todos]="todos"></app-checker>

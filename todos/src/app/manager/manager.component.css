@@ -1,0 +1,14 @@
+.done {
+  text-decoration: line-through;
+  background-color: darkgrey;
+  color: black;
+  width: 200px;
+  margin-bottom: 2px;
+}
+
+.undone {
+  background-color: darkgrey;
+  color: black;
+  width: 200px;
+  margin-bottom: 2px;
+}
