@@ -7,18 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CheckerComponent implements OnInit {
   @Input() todos;
-  phrase;
-  done = [];
+  done2 = [];
   show;
-  function() {
-    this.show = this.todos.every((todo) => {
-      todo.completed == true;
-    });
-    if (this.show == false) {
-      return 'you still have';
-    } else {
-      return 'you are all set';
-    }
+  dones = [];
+  notDones = [];
+  checker() {
+    this.show = !this.show;
   }
 
   ngOnInit(): void {}

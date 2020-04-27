@@ -3,12 +3,9 @@
   align-items: center;
   height: 50px;
 }
-a {
+h2 {
   display: inline;
   margin-right: 30px;
   color: white;
-  font-size: larger;
-}
-.boo {
-  color: blue;
+  font-size: xx-large;
 }

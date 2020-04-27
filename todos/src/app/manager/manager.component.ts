@@ -11,9 +11,6 @@ export class ManagerComponent implements OnInit {
   public todos = [{ title: 'test', completed: false, id: 0 }];
   input;
 
-  // function(event: Event) {
-  //   this.input = event(<HTMLInputElemet>target).value;
-  // }
   add() {
     this.todos.push({
       title: this.input,

@@ -5,3 +5,14 @@
 .hide {
   display: none;
 }
+
+button {
+  margin-left: 170px;
+  border-radius: 5px;
+}
+
+.container {
+  background-color: green;
+  color: white;
+  width: 250px;
+}
