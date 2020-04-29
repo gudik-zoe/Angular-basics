@@ -1,6 +1,6 @@
 <app-header> </app-header>
 <app-manager (function)="hello = $event"></app-manager>
-<span>{{ hello }}</span>
+<span [class]="hello == 'you are all set' ? 'green' : 'red'">{{ hello }}</span>
 <!-- <app-done-todos></app-done-todos>
 <app-un-done-todos></app-un-done-todos> -->
 <!-- <router-outlet></router-outlet>

@@ -1,0 +1,17 @@
+.red {
+  background-color: red;
+  color: white;
+  width: 100px;
+  font-size: larger;
+  margin-left: 4px;
+  border-radius: 5px;
+}
+
+.green {
+  background-color: green;
+  color: white;
+  width: 100px;
+  font-size: larger;
+  margin-left: 4px;
+  border-radius: 5px;
+}

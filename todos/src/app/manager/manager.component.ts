@@ -27,21 +27,36 @@ export class ManagerComponent implements OnInit {
   remove(id) {
     this.todos.splice(id, 1);
   }
-  result;
-  transport() {
-    this.function.emit(
-      this.todos.map((todo) => {
-        if (todo.completed == false) {
-          this.result = ` you still have
-          ${todo.title} `;
-        } else {
-          this.result = ` ${todo.title} 
-          is done `;
-        }
-        return this.result;
-      })
-    );
+  result(todo) {
+    return todo.completed == true;
   }
 
+  result1 = 'you are all set';
+  result2 = this.todos.map((todo) => {
+    if (todo.completed == false) {
+      return todo.title;
+    }
+  });
+  transport() {
+    let tony = ' ';
+    this.function.emit(
+      this.todos.every(this.result)
+        ? this.result1
+        : this.todos.map((todo) => {
+            if (todo.completed == false) {
+              return 'you still have:' + todo.title;
+            }
+          })
+    );
+    return this.result1, this.result2;
+  }
+  //       if(this.tony == true){
+  //       return 'all set'
+  //                     }
+  //    else {
+  //         return todo.title
+  // }
+  //      )
+  //     }
   ngOnInit(): void {}
 }
