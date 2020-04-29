@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-checker',
@@ -8,12 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CheckerComponent implements OnInit {
   @Input() todos;
   done2 = [];
-  show;
-  dones = [];
-  notDones = [];
+  show = true;
+
   checker() {
     this.show = !this.show;
   }
+
+  dones = [];
+  notDones = [];
 
   ngOnInit(): void {}
 }

@@ -1,8 +1,10 @@
 <app-header> </app-header>
-<app-manager></app-manager>
+<app-manager (function)="hello = $event"></app-manager>
+<span>{{ hello }}</span>
 <!-- <app-done-todos></app-done-todos>
 <app-un-done-todos></app-un-done-todos> -->
 <!-- <router-outlet></router-outlet>
 <a routerLink="/done-todos">done-todos</a>
 <br />
 <a routerLink="/un-done-todos">unDone-todos</a> -->
+<app-checker></app-checker>
