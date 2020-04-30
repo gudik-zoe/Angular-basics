@@ -4,7 +4,7 @@ export class User {
     public lastName: string,
     public email: string,
     public phoneNumber: number,
-    public difficulty: string,
+    public difficulty: 'default',
     public preferedTime: string,
     public subscribe: boolean
   ) {}

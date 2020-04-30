@@ -8,12 +8,28 @@ import { User } from 'src/user';
 })
 export class AppComponent {
   options = ['easy', 'medium', 'hard'];
+  hasError = true;
+  mailError;
+
+  validatedifficulty(value) {
+    if ('default' == value) {
+      this.hasError = true;
+    } else {
+      this.hasError = false;
+    }
+  }
+
+  validatemail(value) {
+    value.indexOf('@') == -1
+      ? (this.mailError = true)
+      : (this.mailError = false);
+  }
   userModel = new User(
     'tony',
     'khoury',
     'asda@hotmail.com',
     123456,
-    'hard',
+    'default',
     'sera',
     true
   );
