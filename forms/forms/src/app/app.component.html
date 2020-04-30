@@ -1,39 +1,101 @@
 <h2>form tutorial</h2>
+<br />
+<div class="container-fluid">
+  <form #myForm="ngForm">
+    {{ myForm.value | json }}
+    <hr />
+    <br />
+    {{ userModel | json }}
+    <div class="form-group">
+      <label>name</label>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="userModel.name"
+        class="form-control"
+      />
+    </div>
 
-<form>
-  <div>
-    <label>name</label>
-    <input type="text" name="name" />
-  </div>
+    <div class="form-group">
+      <label>email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        [(ngModel)]="userModel.email"
+      />
+    </div>
 
-  <div>
-    <label>email</label>
-    <input type="email" name="email" />
-  </div>
+    <div class="form-group">
+      <label>last name</label>
+      <input
+        type="text"
+        name="lastName"
+        class="form-control"
+        [(ngModel)]="userModel.lastName"
+      />
+    </div>
+    <!-- <div ngModelGroup="adress">
+      <label>adress</label>
+      <input type="text" name="city" ngModel />
+      <label>town</label>
+      <input type="text" name="town" ngModel />
+    </div> -->
+    <div class="form-group">
+      <label>phone number</label>
+      <input
+        type="tel"
+        name="phoneNumber"
+        class="form-control"
+        [(ngModel)]="userModel.phoneNumber"
+      />
+    </div>
 
-  <div>
-    <label>phone number</label>
-    <input type="tel" name="phone-num" />
-  </div>
+    <div class="form-group">
+      <label>difficulty</label>
+      <select
+        class="custom-select"
+        [(ngModel)]="userModel.difficulty"
+        name="difficulty"
+      >
+        <option selected>choose</option>
+        <option *ngFor="let option of options">{{ option }}</option>
+      </select>
+    </div>
 
-  <div>
-    <label>difficulty</label>
-    <select>
-      <option selected> mode </option>
-      <option *ngFor="let option of options">{{ option }}</option>
-    </select>
-  </div>
+    <div class="mb-3">
+      <label>prefered time</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="prefered time"
+          value="morning"
+          [(ngModel)]="userModel.preferedTime"
+        />
+        <label>morning</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          name="preferedTime"
+          value="sera"
+          class="form-check-input"
+          [(ngModel)]="userModel.preferedTime"
+        />
+        <label>evening</label>
+      </div>
+    </div>
 
-  <div>
-    <label>prefered time</label>
-    <input type="radio" />
-    <label>morning</label>
-    <input type="radio" />
-    <label>evening</label>
-  </div>
-
-  <div>
-    <label>subscribe</label>
-    <input type="checkbox" />
-  </div>
-</form>
+    <div class="form-check mb-3">
+      <input
+        type="checkbox"
+        name="subscribe"
+        class="form-check-input"
+        [(ngModel)]="userModel.subscribe"
+      />
+      <label class="form-check-label">subscribe</label>
+    </div>
+    <button class="btn btn-primary" type="submit">submit</button>
+  </form>
+</div>
