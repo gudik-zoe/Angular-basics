@@ -1,0 +1,39 @@
+<h2>form tutorial</h2>
+
+<form>
+  <div>
+    <label>name</label>
+    <input type="text" name="name" />
+  </div>
+
+  <div>
+    <label>email</label>
+    <input type="email" name="email" />
+  </div>
+
+  <div>
+    <label>phone number</label>
+    <input type="tel" name="phone-num" />
+  </div>
+
+  <div>
+    <label>difficulty</label>
+    <select>
+      <option selected> mode </option>
+      <option *ngFor="let option of options">{{ option }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>prefered time</label>
+    <input type="radio" />
+    <label>morning</label>
+    <input type="radio" />
+    <label>evening</label>
+  </div>
+
+  <div>
+    <label>subscribe</label>
+    <input type="checkbox" />
+  </div>
+</form>
