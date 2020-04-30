@@ -12,6 +12,7 @@ export class ManagerComponent implements OnInit {
   public todos = [{ title: 'test', completed: false, id: 0 }];
   input;
   show = false;
+
   add() {
     this.todos.push({
       title: this.input,

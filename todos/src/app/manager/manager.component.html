@@ -3,6 +3,7 @@
   <div *ngFor="let todo of todos; let id = index">
     <li [class]="todo.completed ? 'done' : 'undone'">
       {{ todo.title }}
+
       <button (click)="done(id)">
         {{ todo.completed ? "undone" : "done" }}
       </button>
