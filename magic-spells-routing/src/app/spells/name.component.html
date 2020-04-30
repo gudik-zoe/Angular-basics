@@ -1,0 +1,7 @@
+<div class="container"></div>
+<br />
+<div *ngFor="let spell of spells">
+  <li [class]="spell.id % 2 !== 0 ? 'color' : ''" (click)="onSelect(spell)">
+    spell name : <span>{{ spell.name }} </span>
+  </li>
+</div>

@@ -1,0 +1,16 @@
+div {
+  margin-left: 10px;
+}
+
+li {
+  width: 300px;
+  color: black;
+  margin-top: 5px;
+  font-size: medium;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+span {
+  color: blue;
+}

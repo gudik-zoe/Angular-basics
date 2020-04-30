@@ -1,0 +1,18 @@
+<div *ngFor="let pokemon of pokemons">
+  <h2 *ngIf="pokemonId == pokemon.id">{{ pokemon.name.english }}</h2>
+  <li *ngIf="pokemonId == pokemon.id">Type: {{ pokemon.type.sort() }}</li>
+  <ul *ngIf="pokemonId == pokemon.id">
+    <li>
+      HP : <span>{{ pokemon.base.HP }} </span>
+    </li>
+    <li>
+      Attack: <span>{{ pokemon.base.Attack }} </span>
+    </li>
+    <li>
+      Defense: <span>{{ pokemon.base.Defense }}</span>
+    </li>
+    <li>
+      Speed: <span>{{ pokemon.base.Speed }} </span>
+    </li>
+  </ul>
+</div>

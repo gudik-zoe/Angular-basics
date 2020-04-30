@@ -1,0 +1,17 @@
+.header {
+  margin-top: -20px;
+  height: 80px;
+  background-color: blueviolet;
+  /* background-image: url(https://lh3.googleusercontent.com/proxy/bgPaAmbid4uKkT6w3dZhTJzfWl46ocnOXA8wdAkS0uZYGTkVuktth1GoEjlVqVt-R8FZF9D1cnI1bJb-KBHwa3kMxd0sRrS72qE74MBgbhe0zERtIy0JKddSwvipzZbJn_LkQjk); */
+}
+
+h2 {
+  color: white;
+}
+
+a {
+  color: white;
+  font-size: x-large;
+  display: inline;
+  margin-left: 10px;
+}

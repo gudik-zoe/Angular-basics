@@ -1,0 +1,24 @@
+li {
+  color: black;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: medium;
+  background-color: lightcoral;
+}
+/* .container {
+  /* margin-top: -20px;
+  height: 80px;
+  background-color: blueviolet;
+  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZDjns5cErf3PoCyYu5oGB2Gw5XuURyki3l60zb7PAygpGWbzg&usqp=CAU); */
+
+span {
+  color: blue;
+  font-size: larger;
+}
+.color {
+  color: black;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: medium;
+  background-color: lightblue;
+}

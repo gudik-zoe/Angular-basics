@@ -1,0 +1,7 @@
+<div class="header"></div>
+<br />
+<div *ngFor="let pokemon of pokemons">
+  <li [class]="pokemon.id % 2 !== 0 ? 'color' : ''" (click)="onSelect(pokemon)">
+    pokemon name : <span>{{ pokemon.name.english }} </span>
+  </li>
+</div>

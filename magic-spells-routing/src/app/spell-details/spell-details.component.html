@@ -1,0 +1,18 @@
+<h2>spell details</h2>
+
+<div *ngFor="let spell of spells">
+  <h3 *ngIf="spell.id == spellId">
+    <span>{{ spell.name }} </span>
+  </h3>
+  <div class="container">
+    <li *ngIf="spell.id == spellId">
+      spell type :<span>{{ spell.type }} </span>
+    </li>
+    <li *ngIf="spell.id == spellId">
+      spell effect : <span>{{ spell.effect }} </span>
+    </li>
+    <li *ngIf="spell.id == spellId">
+      counter spell :<span> {{ spell.counter }} </span>
+    </li>
+  </div>
+</div>
