@@ -127,6 +127,13 @@
       />
       <label class="form-check-label">subscribe</label>
     </div>
-    <button class="btn btn-primary" type="submit">submit</button>
+    <button
+      (click)="share()"
+      [disabled]="hasError || mailError || myForm.invalid"
+      class="btn btn-primary"
+      type="submit"
+    >
+      submit
+    </button>
   </form>
 </div>

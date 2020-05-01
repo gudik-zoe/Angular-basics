@@ -18,7 +18,9 @@ export class AppComponent {
       this.hasError = false;
     }
   }
-
+  share() {
+    window.alert('submit');
+  }
   validatemail(value) {
     value.indexOf('@') == -1
       ? (this.mailError = true)
