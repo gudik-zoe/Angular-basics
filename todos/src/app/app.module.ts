@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 // import { UnDoneTodosComponent } from './un-done-todos/un-done-todos.component';
 import { ManagerComponent } from './manager/manager.component';
 import { CheckerComponent } from './checker/checker.component';
+import { ShowComponent } from './show/show.component';
+import { DoneTodosComponent } from './done-todos/done-todos.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { CheckerComponent } from './checker/checker.component';
 
     ManagerComponent,
     CheckerComponent,
+    ShowComponent,
+    DoneTodosComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [TodosServiceService],

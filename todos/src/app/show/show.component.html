@@ -1,0 +1,30 @@
+<div class="container-fluid" *ngFor="let todo of todos; let id = index">
+  <li [class]="todo.completed ? 'done' : ''">
+    {{ todo.title }}
+    <button class="btn btn-outline-danger" (click)="delete(id)">
+      del
+    </button>
+    <button class="btn btn-outline-primary" (click)="done(id)">
+      {{ todo.completed ? "undone" : "done" }}
+    </button>
+  </li>
+</div>
+<div class="form-group">
+  <br />
+  <input
+    type="text"
+    class="group-small ml-3"
+    [(ngModel)]="input"
+    value="input"
+  />
+  <button
+    [disabled]="input == null || input == ''"
+    class="btn btn-primary btn-md"
+    type="submit"
+    (click)="add(input)"
+  >
+    add
+  </button>
+  <button class="btn btn-secondary" (click)="function()">click</button>
+  <p>{{ boo }}</p>
+</div>

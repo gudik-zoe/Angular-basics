@@ -1,64 +1,92 @@
-<h2>reactive forms</h2>
-
 <div class="container-fluid">
-  <form [formGroup]="myForm">
-    {{ myForm.value | json }}
+  <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label>user-name</label>
+      <label>project name</label>
       <input
-        [class.is-invalid]="myForm.get('userName').invalid"
-        formControlName="userName"
         class="form-control"
         type="text"
+        formControlName="projectName"
+        [class.is-invalid]="
+          newForm.get('projectName').invalid &&
+          newForm.get('projectName').touched
+        "
       />
-      <!-- <div *ngIf="myForm.get('userName').invalid"> -->
-      <small class="text-danger" *ngIf="myForm.get('userName').errors?.required"
-        >user-name's field is required</small
-      >
       <small
         class="text-danger"
-        *ngIf="myForm.get('userName').errors?.minlength"
-        >it should contain than 3 letters</small
+        *ngIf="
+          newForm.get('projectName').errors?.required &&
+          newForm.get('projectName').touched
+        "
       >
-      <!-- </div> -->
-    </div>
-
-    <div class="form-group">
-      <label>password</label>
-      <input
-        formControlName="password"
-        pattern="^\d{10}$"
-        class="form-control"
-        type="password"
-        [class.is-invalid]="myForm.get('password').invalid"
-      />
-      <small class="text-danger" [class.d-none]="myForm.get('password').valid">
-        should containt 10 digits</small
+        this field is required</small
+      >
+      <small
+        *ngIf="
+          newForm.get('projectName').errors?.forbidenNameis &&
+          newForm.get('projectName').touched
+        "
+        class="text-danger"
+        >text is invalid</small
       >
     </div>
     <div class="form-group">
-      <label>confirm password</label>
+      <label>mail</label>
       <input
-        formControlName="confirmPassword"
         class="form-control"
-        type="password"
+        type="text"
+        formControlName="email"
+        [class.is-invalid]="
+          newForm.get('email').invalid && newForm.get('email').touched
+        "
       />
+      <small
+        class="text-danger"
+        *ngIf="
+          newForm.get('email').errors?.required && newForm.get('email').touched
+        "
+        >enter a mail</small
+      >
+      <small class="text-danger" *ngIf="newForm.get('email').errors?.email">
+        enter a valid email
+      </small>
     </div>
-
-    <div formGroupName="new">
-      <div class="form-group">
-        <label>adress</label>
-        <input formControlName="adress" class="form-control" type="text" />
-      </div>
-      <div class="form-group">
-        <label>city</label>
-        <input formControlName="city" class="form-control" type="text" />
-      </div>
-      <div class="form-group">
-        <label>town</label>
-        <input formControlName="town" class="form-control" type="text" />
-      </div>
+    <div class="form-group">
+      <label> state</label>
+      <select
+        class="form-control"
+        formControlName="selectMenu"
+        [class.is-invalid]="
+          newForm.get('selectMenu').errors?.required &&
+          newForm.get('selectMenu').touched
+        "
+      >
+        <option value="stabel">stabel</option>
+        <option value="critical">Critical</option>
+        <option value="finished">finished</option>
+      </select>
+      <small
+        class="text-danger"
+        *ngIf="
+          newForm.get('selectMenu').errors?.required &&
+          newForm.get('selectMenu').touched
+        "
+        >this field is required</small
+      >
     </div>
-    <button class="btn btn-primary">register</button>
+    <div class="form-group">
+      <p>gender</p>
+      <input formControlName="gender" type="radio" value="male" />
+      <label>male</label>
+      <br />
+      <input type="radio" formControlName="gender" value="female" />
+      <label>female</label>
+    </div>
+    <span class="text-danger" *ngIf="!newForm.valid && newForm.touched">
+      invalid form
+    </span>
+    <br />
+    <button class="btn btn-primary" type="submit">
+      submit
+    </button>
   </form>
 </div>

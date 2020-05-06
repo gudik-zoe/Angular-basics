@@ -10,7 +10,6 @@ export class AppComponent {
   options = ['easy', 'medium', 'hard'];
   hasError = true;
   mailError;
-
   validatedifficulty(value) {
     if ('default' == value) {
       this.hasError = true;
