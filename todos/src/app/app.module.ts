@@ -7,26 +7,11 @@ import { AppComponent } from './app.component';
 import { TodosServiceService } from './todos-service.service';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-// import { DoneTodosComponent } from './done-todos/done-todos.component';
-// import { UnDoneTodosComponent } from './un-done-todos/un-done-todos.component';
-import { ManagerComponent } from './manager/manager.component';
-import { CheckerComponent } from './checker/checker.component';
+
 import { ShowComponent } from './show/show.component';
-import { DoneTodosComponent } from './done-todos/done-todos.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    // // DoneTodosComponent,
-    // // UnDoneTodosComponent,
-
-    ManagerComponent,
-    CheckerComponent,
-    ShowComponent,
-    DoneTodosComponent,
-  ],
+  declarations: [AppComponent, ShowComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [TodosServiceService],
   bootstrap: [AppComponent],

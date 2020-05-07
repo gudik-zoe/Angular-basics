@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ITodo } from './todo';
-import { Observable } from 'rxjs';
+// import { HttpClient } from '@angular/common/http';
+// import { ITodo } from './todo';
+// import { Observable } from 'rxjs';
 import { EventEmitter } from 'events';
 
 @Injectable({
@@ -27,13 +27,15 @@ export class TodosServiceService {
     this.todos.splice(i, 1);
   }
 
-  getDoneTodos() {
-    this.todos.map((todo) => {
-      if (todo.completed == true) {
-        return todo.title;
-      }
-    });
-  }
+  // getDoneTodos() {
+  //   let array = [];
+  //   this.todos.map((todo) => {
+  //     if (todo.completed == true) {
+  //       array.push(todo.title);
+  //     }
+  //   });
+  //   return array;
+  // }
 }
 
 // private _url: string = '/assets/todos.json';

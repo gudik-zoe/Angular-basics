@@ -1,5 +1,0 @@
-<div [class]="show ? 'show' : 'hide'">
-  <div class="container" *ngFor="let todo of todos; let i = index">
-    <p *ngIf="todo.completed == false">you still have :{{ todo.title }}</p>
-  </div>
-</div>

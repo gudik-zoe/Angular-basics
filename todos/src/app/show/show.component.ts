@@ -10,7 +10,17 @@ export class ShowComponent implements OnInit {
   todos;
   input;
   doneTodos;
+  array1 = [];
+  array2 = [];
   constructor(private service: TodosServiceService) {}
+
+  check(todo) {
+    return todo.completed == true;
+  }
+
+  function2() {
+    return this.todos.every(this.check);
+  }
 
   delete(id) {
     this.service.removeTodo(id);
@@ -22,15 +32,11 @@ export class ShowComponent implements OnInit {
     this.service.addTodo(input);
     this.input = null;
   }
-  boo = 'hey';
-
+  reminder = true;
   function() {
-    this.service.function.emit((this.boo = 'hello'));
+    this.reminder = !this.reminder;
   }
 
-  // getDoneTodos() {
-  //   this.service.getDoneTodos(this.todos);
-  // }
   ngOnInit() {
     this.todos = this.service.todos;
   }
