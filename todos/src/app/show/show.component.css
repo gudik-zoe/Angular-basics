@@ -1,3 +1,17 @@
 .done {
   text-decoration: line-through;
 }
+
+.hey {
+  margin-top: 5px;
+  background-color: lightgray;
+  width: 300px;
+  border-radius: 10px;
+  font-size: larger;
+}
+
+.container {
+  width: 400px;
+  border-radius: 10px;
+  background-color: lightcoral;
+}
