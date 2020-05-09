@@ -1,43 +1,52 @@
-<div class="container-fluid" *ngFor="let todo of todos; let id = index">
-  <li [class]="todo.completed ? 'done' : ''">
-    {{ todo.title }}
-    <button class="btn btn-outline-danger" (click)="delete(id)">
-      del
-    </button>
-    <button class="btn btn-outline-primary" (click)="done(id)">
-      {{ todo.completed ? "undone" : "done" }}
-    </button>
-  </li>
-</div>
-<div class="form-group">
-  <br />
-  <input
-    type="text"
-    class="group-small ml-3"
-    [(ngModel)]="input"
-    value="input"
-  />
-  <button
-    [disabled]="input == null || input == ''"
-    class="btn btn-primary btn-md"
-    type="submit"
-    (click)="add(input)"
-  >
-    add
-  </button>
-  <button class="btn btn-secondary" (click)="function()">
-    {{ reminder ? "reminder-off" : "reminder-on" }}
-  </button>
+<div class="container-fluid">
+  <ul *ngFor="let todo of todos; let id = index">
+    <li [class]="todo.completed ? 'done' : ''">
+      {{ todo.title }}
 
-  <div class="container-fluid" [class.d-none]="reminder">
-    <p *ngIf="function2(); else elseBlock" class="text-success">
-      you are all set
-    </p>
-    <ng-template #elseBlock>
-      <p class="text-danger">you still have</p>
-      <div *ngFor="let todo of todos">
-        <li *ngIf="todo.completed == false">{{ todo.title }}</li>
-      </div>
-    </ng-template>
+      <button class="btn btn-outline-danger" (click)="delete(id)">
+        del
+      </button>
+      <button class="btn btn-outline-primary" (click)="done(id)">
+        {{ todo.completed ? "undone" : "done" }}
+      </button>
+      <button class="btn btn-outline-secondary" (click)="edit(id)">
+        edit
+      </button>
+    </li>
+  </ul>
+
+  <div class="form-group">
+    <br />
+    <input
+      type="text"
+      class="group-small ml-3"
+      [(ngModel)]="input"
+      value="input"
+    />
+
+    <button
+      [disabled]="input == null || input == ''"
+      class="btn btn-primary btn-md"
+      type="submit"
+      (click)="add(input)"
+    >
+      {{ editMode ? "update" : "add" }}
+    </button>
+
+    <button class="btn btn-secondary" (click)="function()">
+      {{ reminder ? "reminder-off" : "reminder-on" }}
+    </button>
+
+    <div class="container-fluid" [class.d-none]="reminder">
+      <p *ngIf="function2(); else elseBlock" class="text-success">
+        you are all set
+      </p>
+      <ng-template #elseBlock>
+        <p class="text-danger">you still have</p>
+        <div *ngFor="let todo of todos">
+          <li *ngIf="todo.completed == false">{{ todo.title }}</li>
+        </div>
+      </ng-template>
+    </div>
   </div>
 </div>

@@ -10,13 +10,18 @@ import { EventEmitter } from 'events';
 export class TodosServiceService {
   function = new EventEmitter();
   todos = [
-    { title: 'learn Angular', completed: true, id: 1 },
-    { title: 'practice Angular', completed: false, id: 2 },
-    { title: 'create projects', completed: false, id: 3 },
+    { title: 'learn Angular', completed: true, id: 0 },
+    { title: 'practice Angular', completed: false, id: 1 },
+    { title: 'create projects', completed: false, id: 2 },
   ];
+  id = 2;
+
+  idMaker() {
+    return this.id++;
+  }
 
   addTodo(data) {
-    this.todos.push({ title: data, completed: false, id: 3 });
+    this.todos.push({ title: data, completed: false, id: this.idMaker() });
   }
 
   doneTodo(i) {
@@ -26,16 +31,6 @@ export class TodosServiceService {
   removeTodo(i) {
     this.todos.splice(i, 1);
   }
-
-  // getDoneTodos() {
-  //   let array = [];
-  //   this.todos.map((todo) => {
-  //     if (todo.completed == true) {
-  //       array.push(todo.title);
-  //     }
-  //   });
-  //   return array;
-  // }
 }
 
 // private _url: string = '/assets/todos.json';
