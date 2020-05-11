@@ -9,10 +9,8 @@ import { TodosServiceService } from '../todos-service.service';
 export class ShowComponent implements OnInit {
   todos;
   input;
-
+message = ''
   doneTodos;
-  array1 = [];
-  array2 = [];
   editMode = false;
   clickedTodo;
   constructor(private service: TodosServiceService) {}
@@ -20,12 +18,7 @@ export class ShowComponent implements OnInit {
   check(todo) {
     return todo.completed == true;
   }
-  // update(id, input2) {
-  //   let newArray = [...this.todos];
-  //   newArray.splice(id, 1, (this.todos[id].title = input2.value));
-  //   return newArray;
-  // }
-
+  
   function2() {
     return this.todos.every(this.check);
   }
@@ -46,11 +39,17 @@ export class ShowComponent implements OnInit {
       this.todos[this.clickedTodo].title = input;
       this.input = null;
       this.editMode = false;
+      this.message=''
+      
+      
     } else {
       this.service.addTodo(input);
       this.input = null;
       this.editMode = false;
+      this.message=''
+    
     }
+
   }
 
   reminder = true;
