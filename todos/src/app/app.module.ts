@@ -9,9 +9,10 @@ import { TodosServiceService } from './todos-service.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ShowComponent } from './show/show.component';
+import { NewComponent } from './new/new.component';
 
 @NgModule({
-  declarations: [AppComponent, ShowComponent],
+  declarations: [AppComponent, ShowComponent, NewComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [TodosServiceService],
   bootstrap: [AppComponent],

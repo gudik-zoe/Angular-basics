@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
 // import { ITodo } from './todo';
 // import { Observable } from 'rxjs';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodosServiceService {
   function = new EventEmitter();
+  
   todos = [
     { title: 'learn Angular', completed: true, id: 0 },
     { title: 'practice Angular', completed: false, id: 1 },
@@ -20,12 +21,16 @@ export class TodosServiceService {
     return this.id++;
   }
 
+    
+  
+
   addTodo(data) {
     this.todos.push({ title: data, completed: false, id: this.idMaker() });
   }
 
   doneTodo(i) {
     this.todos[i].completed = !this.todos[i].completed;
+    
   }
 
   removeTodo(i) {

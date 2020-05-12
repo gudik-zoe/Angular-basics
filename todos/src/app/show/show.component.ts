@@ -13,6 +13,7 @@ message = ''
   doneTodos;
   editMode = false;
   clickedTodo;
+  newArray = []
   constructor(private service: TodosServiceService) {}
 
   check(todo) {
@@ -33,6 +34,7 @@ message = ''
   }
   done(id) {
     this.service.doneTodo(id);
+    this.service.function.emit(this.todos[id].title)
   }
   add(input) {
     if (this.editMode) {
