@@ -22,27 +22,27 @@
   <div class="form-group">
     <br />
     <input
-    placeholder="add a todo"
+      placeholder="add a todo"
       type="text"
       class="group-small ml-3"
       [(ngModel)]="input"
       value="input"
       required
-      #todo=ngModel
+      #todo="ngModel"
     />
 
     <button
       class="btn btn-primary btn-md"
       type="submit"
-      (click)="todo.valid ? add(input) : message = 'add a todo'"
+      (click)="todo.valid ? add(input) : (message = 'add a todo')"
     >
       {{ editMode ? "update" : "add" }}
     </button>
     <button class="btn btn-secondary" (click)="function()">
       {{ reminder ? "reminder-off" : "reminder-on" }}
     </button>
-    <br>
-    <small class="text-danger ml-2">{{message}} </small>
+    <br />
+    <small class="text-danger ml-2">{{ message }} </small>
     <div class="container-fluid" [class.d-none]="reminder">
       <p *ngIf="function2(); else elseBlock" class="text-success">
         you are all set
@@ -56,3 +56,5 @@
     </div>
   </div>
 </div>
+
+<!-- <p>{{ checkTodos() }}</p> -->

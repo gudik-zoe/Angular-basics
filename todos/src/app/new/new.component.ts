@@ -4,20 +4,21 @@ import { TodosServiceService } from '../todos-service.service';
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
+  styleUrls: ['./new.component.css'],
 })
 export class NewComponent implements OnInit {
-
-  constructor( private newService:TodosServiceService) { }
-result = ['hello' , 'helli']
- 
+  constructor(private newService: TodosServiceService) {}
+  doneTodos = [];
+  unDoneTodos = [];
 
   ngOnInit() {
-  this.newService.function.subscribe(
-    (data) => {
-      this.result.push(data)
-    }
-  )
+    this.newService.doneTodos.subscribe((data) => {
+      this.doneTodos.push(data);
+      console.log(data);
+    });
+    this.newService.unDoneTodos.subscribe((data) => {
+      this.unDoneTodos.push(data);
+      console.log(data);
+    });
   }
-
 }

@@ -9,17 +9,17 @@ import { TodosServiceService } from '../todos-service.service';
 export class ShowComponent implements OnInit {
   todos;
   input;
-message = ''
+  message = '';
   doneTodos;
   editMode = false;
   clickedTodo;
-  newArray = []
+  newArray = [];
   constructor(private service: TodosServiceService) {}
 
   check(todo) {
     return todo.completed == true;
   }
-  
+
   function2() {
     return this.todos.every(this.check);
   }
@@ -32,26 +32,31 @@ message = ''
   delete(id) {
     this.service.removeTodo(id);
   }
+  checkTodos() {
+    for (let todo of this.todos)
+      if (todo.completed == true) {
+        this.service.doneTodos.emit(todo.title);
+      } else {
+        this.service.unDoneTodos.emit(todo.title);
+      }
+  }
   done(id) {
     this.service.doneTodo(id);
-    this.service.function.emit(this.todos[id].title)
+    this.checkTodos();
   }
+
   add(input) {
     if (this.editMode) {
       this.todos[this.clickedTodo].title = input;
       this.input = null;
       this.editMode = false;
-      this.message=''
-      
-      
+      this.message = '';
     } else {
       this.service.addTodo(input);
       this.input = null;
       this.editMode = false;
-      this.message=''
-    
+      this.message = '';
     }
-
   }
 
   reminder = true;
