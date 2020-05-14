@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormGroup} from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'using-services';
-
+  myForm:FormGroup
   constructor() {}
+
+  submit(){
+    console.log(this.myForm.value)
+  }
   ngOnInit() {}
 }
