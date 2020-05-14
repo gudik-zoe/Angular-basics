@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms'
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +8,17 @@ import {FormGroup, FormControl} from '@angular/forms'
 })
 export class AppComponent implements OnInit {
   title = 'using-services';
-  myForm:FormGroup
-  constructor() {}
+  myForm: FormGroup;
+  constructor(private fb: FormBuilder) {}
 
-  onSubmit(){
-    console.log(this.myForm.get.value)
-  }
   ngOnInit() {
-    this.myForm = new FormGroup({
-      name : new FormControl(''),
-      lastName: new FormControl('')
-    })
+    this.myForm = this.fb.group({
+      name: ['tony'],
+      lastName: [''],
+    });
+  }
+
+  onSubmit() {
+    console.log(this.myForm.value);
   }
 }
