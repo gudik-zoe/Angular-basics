@@ -1,7 +1,3 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <h2>Todo List</h2>
-</nav>
-
 <div class="container-fluid" class="container">
   <ul *ngFor="let todo of todos; let id = index">
     <li [class]="todo.completed ? 'done' : ''" class="hey">
@@ -38,7 +34,7 @@
     >
       {{ editMode ? "update" : "add" }}
     </button>
-    <button class="btn btn-secondary" (click)="function()">
+    <button class="btn btn-secondary" (click)="checkTodos()">
       {{ reminder ? "reminder-off" : "reminder-on" }}
     </button>
     <br />
@@ -53,8 +49,9 @@
           <li *ngIf="todo.completed == false">{{ todo.title }}</li>
         </div>
       </ng-template>
+
     </div>
   </div>
+ 
 </div>
 
-<!-- <p>{{ checkTodos() }}</p> -->

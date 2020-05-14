@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosServiceService } from '../todos-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-show',
@@ -10,11 +11,15 @@ export class ShowComponent implements OnInit {
   todos;
   input;
   message = '';
-  doneTodos;
+ 
+  
   editMode = false;
   clickedTodo;
-  newArray = [];
-  constructor(private service: TodosServiceService) {}
+  
+  doneTodos = []
+  unDoneTodos = [];
+  constructor(private service: TodosServiceService ,
+    private router: Router) {}
 
   check(todo) {
     return todo.completed == true;
@@ -33,16 +38,11 @@ export class ShowComponent implements OnInit {
     this.service.removeTodo(id);
   }
   checkTodos() {
-    for (let todo of this.todos)
-      if (todo.completed == true) {
-        this.service.doneTodos.emit(todo.title);
-      } else {
-        this.service.unDoneTodos.emit(todo.title);
-      }
+        this.service.takeTodos.emit(this.todos)
+        this.reminder = !this.reminder;
   }
   done(id) {
-    this.service.doneTodo(id);
-    this.checkTodos();
+    this.service.doneTodo(id)
   }
 
   add(input) {
@@ -64,7 +64,12 @@ export class ShowComponent implements OnInit {
     this.reminder = !this.reminder;
   }
 
+  navigate(){
+    this.router.navigate(['new'])
+  }
+
+
   ngOnInit() {
-    this.todos = this.service.todos;
+    this.todos = this.service.getTodos()
   }
 }

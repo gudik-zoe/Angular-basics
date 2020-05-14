@@ -1,0 +1,6 @@
+<div class="container-fluid">
+<h2>unDoneTodos</h2>
+<ul class="row" *ngFor="let todo of unDoneTodos ">
+<li *ngIf="todo.completed == false">{{todo.title}}</li>
+</ul>
+</div>

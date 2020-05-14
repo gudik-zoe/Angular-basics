@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 // import { ITodo } from './todo';
 // import { Observable } from 'rxjs';
 import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodosServiceService {
-  doneTodos = new EventEmitter();
-  unDoneTodos = new EventEmitter();
+  takeTodos = new EventEmitter();
+  // unDoneTodos = new EventEmitter();
 
   todos = [
     { title: 'learn Angular', completed: true, id: 0 },
@@ -32,6 +33,13 @@ export class TodosServiceService {
 
   removeTodo(i) {
     this.todos.splice(i, 1);
+  }
+  getTodos(){
+    return this.todos
+  }
+
+  getTheTodo(index){
+    return this.todos[index]
   }
 }
 

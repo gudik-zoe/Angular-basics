@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosServiceService } from '../todos-service.service';
-// import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new',
@@ -8,19 +7,15 @@ import { TodosServiceService } from '../todos-service.service';
   styleUrls: ['./new.component.css'],
 })
 export class NewComponent implements OnInit {
-  constructor(private newService: TodosServiceService){}
-              //  private route:ActivatedRoute) {}
-  doneTodos;
-
+  constructor(private newService: TodosServiceService) {}
+  doneTodos= [];
  
 
   
 
   ngOnInit() {
-    this.newService.takeTodos.subscribe(
-      data => {
-        this.doneTodos = data
-      }
-    )
-}
+   this.newService.doneTodos.subscribe(data => {
+     this.doneTodos = (data)
+   })
+  }
 }

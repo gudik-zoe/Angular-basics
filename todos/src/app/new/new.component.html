@@ -1,4 +1,6 @@
-<h2>Done Todos</h2>
-<p>{{ doneTodos }}</p>
-<h2>unDone Todos</h2>
-<p>{{ unDoneTodos }}</p>
+<div class="container-fluid">
+<h2>doneTodos</h2>
+<ul *ngFor="let todo of doneTodos ">
+<li *ngIf="todo.completed">{{todo.title}}</li>
+</ul>
+</div>
