@@ -1,9 +1,10 @@
 <div class="container-fluid">
-    <form [formGroup]="myForm" >
+    <form [formGroup]="myForm"  (ngSubmit)="onSubmit()">
 
         <div class="form-group">
             <label>name</label>
             <input type="text" class="form-control" 
+            
             formControleName="name"/>
 
         </div>
@@ -11,9 +12,11 @@
         <div class="form-group">
             <label>last name</label>
             <input type="text" class="form-control"
+            
             formControleName="lastname"/>
             
         </div>
+        {{myForm.value | json}}
     </form>
-    <button class="btn btn-primaty" type="submit" (click)="submit()"> post</button>
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">post</button>
 </div>
