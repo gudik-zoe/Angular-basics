@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 @Component({
@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
     //  anotherPosts = []
   ngOnInit() {
     this.myForm = this.fb.group({
-      name: [''],
-      lastName: [''],
+      name: ['' , Validators.required],
+      lastName: ['' , Validators.required],
     });
   }
 
