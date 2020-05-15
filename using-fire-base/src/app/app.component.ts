@@ -16,10 +16,10 @@ export class AppComponent implements OnInit {
 constructor(private fb: FormBuilder ,
             private http:HttpClient,
             private service:HttpService) {}
-loading = false
+loading : any = false
 posting= false
 posts = []
-
+error = true
 ngOnInit() {
 this.myForm = this.fb.group({
 name: ['' , Validators.required],
@@ -33,7 +33,10 @@ onClickFetch(){
   this.service.fetchData('https://tony-87e28.firebaseio.com/posts.json').subscribe(data => {
     this.posts = data
     this.loading = false
-  })
+  }, error => {
+    this.error = false
+    this.loading = false
+    })
 }
 
   onClick(){
@@ -41,6 +44,17 @@ onClickFetch(){
   this.service.postData(this.myForm.value ,'https://tony-87e28.firebaseio.com/posts.json')
   this.myForm.reset()
   this.posting = false
+}
+
+clear(){
+  this.service.delete().subscribe(() => {
+    this.posts = []
+  }
+  )
+ 
+}
+handleError(){
+  this.error = true
 }
 
 // onSubmit() {

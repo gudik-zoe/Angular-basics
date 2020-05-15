@@ -32,6 +32,10 @@ export class HttpService {
     
   }
 
+  delete(){
+   return  this.http.delete('https://tony-87e28.firebaseio.com/posts.json')
+  }
+
 }
 
 

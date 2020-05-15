@@ -28,10 +28,13 @@
   <button class="btn btn-secondary"
    type="button"
    (click)="onClickFetch()">fetch posts</button>
- 
+   |
+
+ <button type="button" class="btn btn-danger" (click)="clear()">clear posts</button>
   <hr>
-  <p *ngIf="loading">loading..</p>
-  </div> 
+  <p *ngIf="loading && error == false">loading..</p>
+
+<div *ngIf="posts.length >= 1 ; else  elseBlock" >
   <div class="container-fluid" *ngFor="let i of posts">
   <table class="table">
   <thead>
@@ -49,5 +52,13 @@
   </tr>
   </tbody>
   </table>
-  </div>
+</div>
+</div>
+<ng-template #elseBlock>
+  <p class="text-danger" *ngIf="posts.length < 1">no posts</p>
+</ng-template>
+<div class="container-fluid" [class.d-none]="error">
+<p class="text-danger"> you don't have the permession to access the dataBase</p>
+<button class="btn btn-danger" type="button" (click)="handleError()">ok</button>
+</div>
  
