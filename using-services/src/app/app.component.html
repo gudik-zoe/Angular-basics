@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form [formGroup]="myForm">
+  <form [formGroup]="myForm" >
     <div class="form-group">
       <label>name</label>
       <input type="text" class="form-control" formControlName="name" />
@@ -11,7 +11,19 @@
     </div>
     {{ myForm.value | json }}
   </form>
-  <button class="btn btn-primary" type="submit" (click)="onSubmit()">
-    post
+  <button class="btn btn-primary" type="submit" (click)="onSubmit()"> push post
   </button>
+    <button class="btn btn-secondary" type="button" (click)="fetchPosts()">fetch posts</button>
+    <!-- <button class="btn btn-info" type="submit" (click)="onSubmitAnother()"  >  post to another place
+    </button>
+    <button class="btn btn-info" type="submit" (click)="fetchFromAnotherPosts()"  >  fetch  from another place
+    </button> -->
 </div>
+
+<div class="container-fluid">
+  <li *ngFor="let i of posts">{{i.name}}</li>
+</div>
+
+<!-- <div class="container-fluid">
+  <li *ngFor="let i of anotherPosts">{{i.name}}</li>
+</div> -->

@@ -5,12 +5,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProvaService } from './prova.service';
-
-import { CounterService } from './counter.service';
+import {HttpClientModule} from '@angular/common/http'
+import { CounterService} from './counter.service';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule , HttpClientModule],
   providers: [ProvaService, CounterService],
   bootstrap: [AppComponent],
 })
