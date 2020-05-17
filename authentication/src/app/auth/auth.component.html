@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <form [formGroup]="myForm" >
+  <div class="form-group">
+    <label>email</label>
+    <input class="form-control" type="email" formControlName="email" />
+  </div>
+  <div class="form-group">
+    <label>password</label>
+    <input class="form-control" type="password" formControlName="password" />
+  </div>
+  <hr>
+  <button [disabled]="myForm.invalid"class="btn btn-primary" type="button" (click)="signUp()">{{signIn ? 'Sign In' : 'Sign Up'}}</button> |
+  <button class="btn btn-primary" type="button" (click)="switch()">{{signIn ? 'switch to sign up' : 'switch to sign in'}}</button>
+    </form>
+    <p class="text-danger" *ngIf="error">{{errorMessage}}</p>
+    <span *ngIf="isloading">loading..</span>
+  </div>

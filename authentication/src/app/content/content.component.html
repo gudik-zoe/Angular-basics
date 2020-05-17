@@ -1,0 +1,8 @@
+<h2>you have access!</h2>
+
+<button type="button" class="btn btn-primary" (click)="fetch()"> fetch</button>
+<div class="container-fluid">
+<ul class="list-group" *ngFor="let i of arr">
+    <li class="list-group-item">name:<span>{{i.name}}</span> , lastName:<span>{{i.lastName}}</span></li>
+  </ul>
+</div>
