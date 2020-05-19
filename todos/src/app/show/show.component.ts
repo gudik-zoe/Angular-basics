@@ -35,7 +35,7 @@ export class ShowComponent implements OnInit {
   }
 
   delete(id) {
-    this.service.removeTodo(id);
+   this.service.removeTodo(id)
   }
   checkTodos() {
         this.service.takeTodos.emit(this.todos)

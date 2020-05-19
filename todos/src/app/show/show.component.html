@@ -3,7 +3,7 @@
     <li [class]="todo.completed ? 'done' : ''" class="hey">
       {{ todo.title }}
 
-      <button class="btn btn-outline-danger btn-sm" (click)="delete(id)">
+      <button class="btn btn-outline-danger btn-sm" (click)="delete(todo.id)">
         del
       </button>
       <button class="btn btn-outline-primary btn-sm" (click)="done(id)">
@@ -24,6 +24,7 @@
       [(ngModel)]="input"
       value="input"
       required
+      ngModel
       #todo="ngModel"
     />
 

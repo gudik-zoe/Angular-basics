@@ -32,8 +32,10 @@ export class TodosServiceService {
   }
 
   removeTodo(i) {
-    this.todos.splice(i, 1);
+  this.todos = this.todos.filter(todo => todo[i] !== i)
   }
+
+
   getTodos(){
     return this.todos
   }
