@@ -2,22 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { HttpClient} from '@angular/common/http';
-import { ɵangular_packages_platform_browser_platform_browser_d } from '@angular/platform-browser';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Router } from '@angular/router';
+import { EventService } from '../event.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+
 myForm:FormGroup
   constructor(private fb:FormBuilder , 
-    private http:HttpClient) { }
+    private http:HttpClient , 
+    private router:Router , 
+    private service :EventService) { }
 
   signIn = false
   error = false
   errorMessage=''
   isloading = false
+  loggedIn= false
 
   switch(){
     this.signIn = !this.signIn
@@ -54,6 +58,7 @@ myForm:FormGroup
   }
   
   else{
+    //needs to be adjusted "go to tutorial"
     this.isloading = true
     this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA1dSw4fhE_vyBAYYCeuafUIdDAH-cP_9c',
     {
@@ -63,9 +68,11 @@ myForm:FormGroup
 
     }).subscribe(
       data => {
-        
         console.log('succeded' , data)
         this.isloading = false
+        this.router.navigate(['/content'])
+         this.loggedIn = true
+        this.service.stateSender.emit(this.loggedIn)
       },
       error =>{
         this.isloading = false

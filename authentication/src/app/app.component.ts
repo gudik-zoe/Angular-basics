@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, EmailValidator } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
+import { EventService } from './event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +10,24 @@ import { FormBuilder, FormGroup, Validators, EmailValidator } from '@angular/for
 })
 export class AppComponent implements OnInit{
 
-  constructor(private fb:FormBuilder){}
+  constructor(private service:EventService ,
+    private router : Router){}
   title = 'authentication';
  
+  state;
 
+  navigateBack(){
+    this.state= false
+    this.router.navigate(['/auth'])
+  }
   
 
 ngOnInit(){
+  this.service.stateSender.subscribe(
+    data => {
+      this.state = data
+    }
+  )
 
   }
 }
