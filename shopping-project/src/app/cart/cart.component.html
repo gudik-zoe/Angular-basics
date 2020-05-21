@@ -8,9 +8,11 @@
            
             <th scope="col">Item</th>
             <th scope="col">Type</th>
-            <th scope="col">image</th>
+            <th scope="col">Image</th>
             <th scope="col">Quantity</th>
             <th scope="col">price</th>
+            <th scope="col">total</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -19,14 +21,17 @@
             <td>{{pro.type}}</td>
             <td><img src={{pro.image}} width="20" height="20" /></td>
             <td>
-              <button class="btn btn-danger btn-sm" type="button" (click)="minus(pro.id)"  > - </button>
+              <button [disabled]="pro.quantity === 0" class="btn btn-danger btn-sm" type="button" (click)="minus(pro.id)"  > - </button>
               <span class="font-weight-bold">{{pro.quantity}}</span>
               <button class="btn btn-success btn-sm" type="button" (click)="plus(pro.id)" > + </button>
             </td>
             <td>{{pro.price | currency}}</td>
+            <td>{{pro.price * pro.quantity | currency}}</td>
+            <button type="button" class="btn btn-danger btn-sm mt-2" (click)="remove(pro.id)">x</button>
           </tr>
            <tr>
             <th scope="row">Total</th>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -40,4 +45,5 @@
           </tr>  -->
         </tbody>
       </table>
+      <hr *ngIf="cardItems.length == 0">
 </div>

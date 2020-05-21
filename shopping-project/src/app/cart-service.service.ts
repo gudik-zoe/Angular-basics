@@ -6,10 +6,12 @@ import { Injectable , EventEmitter} from '@angular/core';
 export class CartServiceService {
 addToCard = new EventEmitter()
 
+
 cardItems = []
 
 add(id){
   this.cardItems.push(this.products[id])
+  
 }
 
 remove(id){

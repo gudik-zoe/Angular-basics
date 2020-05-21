@@ -5,7 +5,7 @@
         <p>type:<em>{{product.type}}</em> </p>
         <img src={{product.image}} width="100px" height="100px" />
         <p class="lead"> price:{{product.price | currency}}</p>
-        <button type="button" class="btn btn-primary" (click)="add(product.id)">add to card</button>
+        <button [disabled]="clicked" type="button" class="btn btn-primary" (click)="add(product.id)">add to card</button>
     </div>
     <hr>    
 

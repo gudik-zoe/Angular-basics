@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , EventEmitter } from '@angular/core';
 import { CartServiceService } from '../cart-service.service';
+
 
 @Component({
   selector: 'app-cart',
@@ -10,6 +11,8 @@ export class CartComponent implements OnInit {
 
   cardItems = []
   constructor(private service:CartServiceService) { }
+  back = new EventEmitter()
+ 
 
 //l'elemento va tolto subito
 remove(id){
@@ -23,10 +26,18 @@ remove2(id){
 total(){
   let sum = 0
 for (let i = 0 ; i < this.cardItems.length ; i++){
-      sum += this.cardItems[i].price
+      sum += this.cardItems[i].price * this.cardItems[i].quantity 
 }
 return sum 
 }
+
+
+// price(id){
+//   let total = 0
+//     total = this.cardItems[id].price * this.cardItems[id].quantity 
+//     return total
+  
+// }
 
 plus(id){
 this.cardItems[id].quantity++
@@ -37,9 +48,11 @@ minus(id){
 }
 
 
+
   
   ngOnInit() {
     this.cardItems = this.service.getCardItems()
+
   }
 
 }

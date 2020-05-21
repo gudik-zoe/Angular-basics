@@ -9,7 +9,7 @@ import { CartServiceService } from '../cart-service.service';
 export class ProductsComponent implements OnInit {
 products = []
   constructor(private service:CartServiceService) { }
-  
+  clicked = false
   
   add(id){
     this.service.add(id)
