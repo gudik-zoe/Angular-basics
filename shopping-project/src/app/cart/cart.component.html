@@ -1,0 +1,43 @@
+
+<h2 class="text-center">to buy</h2>
+<div class="container-fluid" >
+  <span class="text-danger" *ngIf="cardItems.length == 0">your card is Empty</span>
+    <table class="table" *ngIf="cardItems.length > 0">
+        <thead>
+          <tr>
+           
+            <th scope="col">Item</th>
+            <th scope="col">Type</th>
+            <th scope="col">image</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [class]="pro.id % 2  !== 0 ? 'color' : ''" *ngFor="let pro of cardItems" >
+            <td >{{pro.title}}</td>
+            <td>{{pro.type}}</td>
+            <td><img src={{pro.image}} width="20" height="20" /></td>
+            <td>
+              <button class="btn btn-danger btn-sm" type="button" (click)="minus(pro.id)"  > - </button>
+              <span class="font-weight-bold">{{pro.quantity}}</span>
+              <button class="btn btn-success btn-sm" type="button" (click)="plus(pro.id)" > + </button>
+            </td>
+            <td>{{pro.price | currency}}</td>
+          </tr>
+           <tr>
+            <th scope="row">Total</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="font-weight-bold">{{total() | currency}}</td>
+          </tr>
+          <!-- <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>  -->
+        </tbody>
+      </table>
+</div>
