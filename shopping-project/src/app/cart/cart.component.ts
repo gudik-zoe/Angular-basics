@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  pushArr= new EventEmitter()
+  
+  tony = 'hey'
 
   cardItems = []
   constructor(private service:CartServiceService ,
@@ -47,8 +48,7 @@ minusOne(id){
 
 purchase(){
    this.router.navigate(['/purchase'])
-  this.service.addToCard.next(this.cardItems)
-  console.log(this.cardItems)
+
 }
   
   ngOnInit() {

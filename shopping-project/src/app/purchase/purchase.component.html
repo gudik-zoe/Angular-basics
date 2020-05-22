@@ -1,7 +1,34 @@
-<p>purchase works!</p>
-<div class="container-fluid">
-    <div *ngFor="let buy of toBuy">
-        <li>{{buy.title}}</li>
-        <li>{{buy.quantity}}</li>
-    </div>
+<div *ngIf="toBuy.length > 0 " class="container" style="background-color: lightblue;">
+              <h2 class="text-center"> My card </h2>
+  <div  class="container-fluid" *ngFor="let buy of toBuy">
+    
+    <ol class="list-group">
+      <div class="container-fluid">   
+          <li class="list-group-item" >
+            <div class="text-right">
+              <button class="btn btn-info" (click)="edit()">Edit</button>
+              </div>
+              <h2 class="list-group-heading"> {{buy.title}}</h2>
+              <p class="font-weight-bold"> type:{{buy.type}}</p>
+              <p class="font-weight-bold"> price:{{buy.price | currency}} </p>
+              <p class="font-weight-bold"> quantity: {{buy.quantity}}</p>
+              <div class="text-right">
+              <img src={{buy.image}} width="150" height="150" class="image-responsive mb-10" > 
+              </div>
+              <p class="font-weight-bold"> total: {{buy.price * buy.quantity | currency}}</p>
+          </li>
+      </div>
+    </ol>
+  </div>
+  <hr>
+  <div
+   class="container-fluid" 
+  class="font-weight-bold"
+  style="
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  ">
+  Total:{{total() | currency}}</div>
 </div>
+

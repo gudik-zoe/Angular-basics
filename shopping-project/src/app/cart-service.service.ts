@@ -1,11 +1,12 @@
-import { Injectable , EventEmitter} from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable , EventEmitter } from '@angular/core';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartServiceService {
-addToCard = new Subject()
+  pushArr= new EventEmitter()
+
 
 
 cardItems = []
