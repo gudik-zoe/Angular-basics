@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,  } from '@angular/forms';
+import {  Custome } from './custome.validator';
+
 
 @Component({
   selector: 'app-registration',
@@ -19,12 +21,16 @@ export class RegistrationComponent implements OnInit {
       name : [ '' , Validators.required] ,
       lastName : ['' , Validators.required],
       email : ['' , Validators.required],
-      password : ['' , Validators.required],
+      password : ['' , [Validators.required, Validators.minLength(6)]],
+      confirmPassword:['', Validators.required  ],
       city : ['' , Validators.required],
       province : ['' , Validators.required],
       streetNumber : ['' , Validators.required]
-    }
+    } 
+    , { validator : [Custome.confirmation , Custome.number] }  
     ) 
   }
+
+    
 
 }
