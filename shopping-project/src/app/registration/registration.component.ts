@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
       password : ['' , Validators.required],
       city : ['' , Validators.required],
       province : ['' , Validators.required],
-      streetName : ['' , Validators.required],
+      streetNumber : ['' , Validators.required]
     }
     ) 
   }
