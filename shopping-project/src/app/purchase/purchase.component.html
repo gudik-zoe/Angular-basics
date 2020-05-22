@@ -23,12 +23,16 @@
   <hr>
   <div
    class="container-fluid" 
-  class="font-weight-bold"
+  class="font-weight-bold ml-4"
   style="
-  background-color: white;
-  color: black;
-  border-radius: 10px;
+  height: 30px;
+  border-radius: 5px;
   ">
-  Total:{{total() | currency}}</div>
+  <p class="text-center" style="font-size: larger;">  Total:{{total() | currency}}</p>
+</div>
+<div class="container-fluid">
+  <button *ngIf="toBuy.length > 0" type="button" class="btn btn-primary btn-lg btn-block" (click)="toReg()"> confirm</button>
+</div>
+  <hr>
 </div>
 

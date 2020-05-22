@@ -23,6 +23,9 @@ for (let i = 0 ; i < this.toBuy.length ; i++){
     return sum 
 }
 
+toReg(){
+  this.router.navigate(['/registration'])
+}
   edit(){
     this.router.navigate(['/card'])
   }
