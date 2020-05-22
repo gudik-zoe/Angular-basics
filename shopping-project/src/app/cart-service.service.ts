@@ -1,21 +1,22 @@
 import { Injectable , EventEmitter} from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartServiceService {
-addToCard = new EventEmitter()
+addToCard = new Subject()
 
 
 cardItems = []
 
 add(id){
   this.cardItems.push(this.products[id])
-  
 }
 
 remove(id){
   this.cardItems = this.cardItems.filter(item => item.id !== id)
+  
 }
 
 getProducts (){
@@ -25,8 +26,13 @@ getCardItems (){
   return this.cardItems
 }
 
+plus(id){
+this.products[id].quantity++
+}
 
-
+minus(id){
+  this.products[id].quantity--
+}
   products= [
     {
       title:'Rubic cube', 

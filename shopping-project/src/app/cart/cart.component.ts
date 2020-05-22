@@ -1,5 +1,8 @@
 import { Component, OnInit , EventEmitter } from '@angular/core';
 import { CartServiceService } from '../cart-service.service';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -8,20 +11,22 @@ import { CartServiceService } from '../cart-service.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  pushArr= new EventEmitter()
 
   cardItems = []
-  constructor(private service:CartServiceService) { }
-  back = new EventEmitter()
- 
+  constructor(private service:CartServiceService ,
+              private router:Router) { }
+  
 
 //l'elemento va tolto subito
 remove(id){
- this.cardItems = this.cardItems.filter(item => item.id !== id)
+// this.service.remove(id)
+ this.cardItems = this.cardItems.filter(item => item.id !==id)
 }
 // l'elemento non va tolto fino che cambi il route
-remove2(id){
-  this.service.remove(id)
-}
+// remove2(id){
+//   this.service.remove(id)
+// }
 
 total(){
   let sum = 0
@@ -31,24 +36,20 @@ for (let i = 0 ; i < this.cardItems.length ; i++){
 return sum 
 }
 
-
-// price(id){
-//   let total = 0
-//     total = this.cardItems[id].price * this.cardItems[id].quantity 
-//     return total
-  
-// }
-
-plus(id){
-this.cardItems[id].quantity++
+plusOne(id){
+this.service.plus(id)
 }
 
-minus(id){
-  this.cardItems[id].quantity--
+minusOne(id){
+  this.service.minus(id)
 }
 
 
-
+purchase(){
+   this.router.navigate(['/purchase'])
+  this.service.addToCard.next(this.cardItems)
+  console.log(this.cardItems)
+}
   
   ngOnInit() {
     this.cardItems = this.service.getCardItems()
