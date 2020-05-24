@@ -8,7 +8,6 @@ import { RegistrationComponent } from './registration/registration.component';
 const routes: Routes = [
   {path:'products' , component:ProductsComponent},
   {path:'card' , component:CartComponent},
-  // {path:'purchase' , component:PurchaseComponent},
   {path:'purchase' , component:RegistrationComponent}
 ];
 

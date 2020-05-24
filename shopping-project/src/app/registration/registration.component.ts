@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   isLoading = false
   message = 'loading'
   data = true
-  other = false
+
 
   constructor(private fb:FormBuilder ,
               private service:CartServiceService , 
@@ -40,7 +40,6 @@ export class RegistrationComponent implements OnInit {
     this.service.postData
     ('https://shopping-project-895a7.firebaseio.com/orders.json',finalData)
     .subscribe(res => {
-    this.isLoading = false
     this.myForm.reset()
     this.final = []
     this.data= false
@@ -57,7 +56,9 @@ export class RegistrationComponent implements OnInit {
     this.router.navigate(['/products'])
   }
   ngOnInit() {
-    this.final = this.service.cardItems
+    this.final = this.service.getCardItems()
+
+    
     this.myForm=this.fb.group({
       name : [ '' , Validators.required] ,
       lastName : ['' , Validators.required],
