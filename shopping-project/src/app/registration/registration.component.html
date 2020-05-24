@@ -91,6 +91,7 @@
             </form>
             <div class="container">
             <button
+            [disabled]="!myForm.valid || this.final.length == 0"
              *ngIf="isLoading== false" 
              type="button" 
              class="btn btn-primary btn-lg btn-block " 
