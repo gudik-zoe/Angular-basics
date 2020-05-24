@@ -40,6 +40,9 @@ return sum
 plusOne(id){
 this.service.plus(id)
 }
+toStore(){
+  this.router.navigate(['/products'])
+}
 
 minusOne(id){
   this.service.minus(id)

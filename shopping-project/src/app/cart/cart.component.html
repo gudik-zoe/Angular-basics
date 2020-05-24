@@ -1,7 +1,7 @@
 
 <h2 class="text-center">to buy</h2>
 <div class="container-fluid" >
-  <span class="text-danger" *ngIf="cardItems.length == 0">your card is Empty</span>
+ 
     <table class="table" *ngIf="cardItems.length > 0">
         <thead>
           <tr>
@@ -46,7 +46,25 @@
           </tr>  -->
         </tbody>
       </table>
-      <hr>
+      
 </div>
 
 
+<div *ngIf="cardItems.length == 0 "
+class="container ml-5" 
+style="background-color: lightblue;
+width: 450px;
+height: 100px;
+border-radius: 5px;
+">
+<h4 class="text-center" style="color: red;">your card is empty</h4>
+<div class="container"
+    style="
+    height: 50px;">
+  <button type="button"
+  class="btn btn-success btn-block" 
+  (click)="toStore()">add items</button>
+</div>
+</div>
+
+<hr>

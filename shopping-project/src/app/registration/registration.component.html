@@ -1,14 +1,14 @@
     <br>
     <div class="container ml-5"
-         style="background-color:lightpink;
-        width: 350px; 
-        float: left;
-        border-radius: 5px;">
-        <form [formGroup]="myForm">
-           
-             <div class="form-group">
-            <div style="float: left;">
-            <label > name</label>
+            style="background-color:lightpink;
+            width: 350px; 
+            float: left;
+            border-radius: 5px;">
+            <form [formGroup]="myForm">
+        
+        <div class="row"> 
+                <div class="col-md-4">
+             <label>name</label>
              <input type="text" 
              style="width: 120px;"
             formControlName="name" 
@@ -17,31 +17,18 @@
             />
             <small class="text-danger" *ngIf="myForm.get('name').invalid && myForm.get('name').touched  "> this field is reqired </small>
             </div>
-            <div style="float: right;
-            margin-right: 30px;" >
-                <div class="form-group"> 
-                    <label>lastName</label>
-                    <input type="text" 
-                     formControlName="lastName"
-                      class="form-control" 
-                      style="width: 120px;
-                      "
-                    [class.is-invalid]="!myForm.get('lastName').valid && myForm.get('lastName').touched" />
-                    <small class="text-danger" *ngIf="myForm.get('lastName').invalid && myForm.get('lastName').touched  "> this field is reqired </small>
-                </div>
-                
-        </div>
-            
-            
-           
-<!--             
-        <div class="form-group"> 
+            <div class="col-md-4 ml-4"> 
             <label>lastName</label>
-            <input type="text" formControlName="lastName" class="form-control" 
+            <input type="text" 
+            style="width: 120px;"formControlName="lastName" class="form-control" 
             [class.is-invalid]="!myForm.get('lastName').valid && myForm.get('lastName').touched" />
             <small class="text-danger" *ngIf="myForm.get('lastName').invalid && myForm.get('lastName').touched  "> this field is reqired </small>
-        </div> -->
-        <!-- <div class="form-group"> 
+            </div>
+        </div>
+        <br>
+        
+
+            <div class="form-group" > 
             <label>Email</label>
             <input type="email" 
             formControlName="email"
@@ -49,56 +36,64 @@
              placeholder="example@example.com"
             [class.is-invalid]="!myForm.get('email').valid && myForm.get('email').touched" />
             <small class="text-danger" *ngIf="myForm.get('email').invalid && myForm.get('email').touched  "> this field is reqired </small>
-        </div>
-        <div class="form-group"> 
+            </div>
+            <div class="form-group"> 
             <label>password</label>
             <input type="password" formControlName="password" class="form-control" 
             [class.is-invalid]="!myForm.get('password').valid && myForm.get('password').touched"/>
             <small class="text-danger" *ngIf="myForm.get('password').errors?.required && myForm.get('password').touched  "> this field is reqired </small>
             <small class="text-danger" *ngIf="myForm.get('password').errors?.minlength && myForm.get('password').touched ">password is too short</small>
-        </div>
-        <div class="form-group"> 
+            </div>
+            <div class="form-group"> 
             <label>confim-password</label>
             <input type="password" formControlName="confirmPassword" class="form-control" 
             [class.is-invalid]="!myForm.get('confirmPassword').valid && myForm.get('confirmPassword').touched"/>
             <small class="text-danger" *ngIf="myForm.get('confirmPassword').errors?.required && myForm.get('confirmPassword').touched  "> this field is reqired </small>
             <small class="text-danger" *ngIf="myForm.get('confirmPassword').errors?.hello && myForm.get('confirmPassword').touched ">not identical to your password</small>
-        </div>
-        <div class="form-group"> 
+            </div>
+            <div class="form-group"> 
             <label>phone-number</label>
             <input type="tel"
+            style="width: 150px;"
              formControlName="phoneNumber" 
              class="form-control" 
              placeholder="320-156-1369"
             [class.is-invalid]="!myForm.get('phoneNumber').valid && myForm.get('phoneNumber').touched"/>
             <small class="text-danger" *ngIf="myForm.get('phoneNumber').errors?.required && myForm.get('phoneNumber').touched  "> this field is reqired </small>
-        </div>
+            </div>
         
-        <div class="form-group" style="width: 200px;">
+            
+        <div class="row">
+            <div class="col-md-4" >
             <label>city</label>
-            <input type="text" formControlName="city" class="form-control" 
+            <input type="text" 
+            style="width: 80px;"  formControlName="city" class="form-control" 
             [class.is-invalid]="!myForm.get('city').valid && myForm.get('city').touched"/>
             <small class="text-danger" *ngIf="myForm.get('city').invalid && myForm.get('city').touched  "> this field is reqired </small>
-        </div>
-        <div class="form-group" style="width: 200px;"> 
+            </div>
+            <div class="col-md-4" >
             <label>province</label>
-            <input type="text" formControlName="province" class="form-control" 
+            <input type="text" style="width: 80px;"
+             formControlName="province" class="form-control" 
             [class.is-invalid]="!myForm.get('province').valid && myForm.get('province').touched"/>
             <small class="text-danger" *ngIf="myForm.get('province').invalid && myForm.get('province').touched  "> this field is reqired </small>
-        </div> 
-        <div class="form-group" style="width: 70px;"> 
-            <label>street-N#</label>
-            <input type="text" formControlName="streetNumber" class="form-control" 
+            </div>
+            <div class="col-md-4" >
+            <label>street#</label>
+            <input type="text" style="width: 50px;" formControlName="streetNumber" class="form-control" 
             [class.is-invalid]="!myForm.get('streetNumber').valid && myForm.get('streetNumber').touched" />
             <small class="text-danger" *ngIf="myForm.get('streetNumber').errors?.required && myForm.get('streetNumber').touched"> this field is reqired </small>
             <small class="text-danger" *ngIf="myForm.get('streetNumber').errors?.hey && myForm.get('streetNumber').touched">it should be a number</small>
+            </div>
         </div>
-        </form>
-        <div class="container-fluid">
+        <br>
+            </form>
+            <div class="container-fluid">
             <button  type="button" class="btn btn-primary btn-lg btn-block" (click)="submit()" > confirm</button>
             </div>
-            <hr> -->
-    <!-- </div> -->
+            <hr> 
+    </div>
+     
      
     
         
@@ -111,8 +106,8 @@
         style="background-color: lightblue;
         width: 450px;
         height: 100px;
+        margin-right: 350px;
         float: right;
-        margin-right: 250px;
         border-radius: 5px;
        ">
       <h4 class="text-center" style="color: red;">your card is empty</h4>
@@ -165,16 +160,9 @@
         
     </div>
    
-        <div  *ngIf="isLoading" >
-        <img
-        src="https://remas.kcl.ac.uk/Content/images/google-loading-icon.gif"
+        
        
-        style="float: right;
-        width:60 ;
-        height:60";
-        >
-        <h2>hello </h2>
-        </div> 
+        
    
     
     
