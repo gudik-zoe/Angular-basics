@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,  } from '@angular/forms';
 import {  Custome } from './custome.validator';
 import { CartServiceService } from '../cart-service.service';
@@ -12,9 +12,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  @Input() 
   final = []
   isLoading = false
   message = 'loading'
+  data = true
+  other = false
 
   constructor(private fb:FormBuilder ,
               private service:CartServiceService , 
@@ -38,6 +41,11 @@ export class RegistrationComponent implements OnInit {
     ('https://shopping-project-895a7.firebaseio.com/orders.json',finalData)
     .subscribe(res => {
     this.isLoading = false
+    this.myForm.reset()
+    this.final = []
+    this.data= false
+   
+    
       console.log(res)
     })
   }

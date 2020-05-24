@@ -1,8 +1,9 @@
+    <app-buy-again [data]="data"></app-buy-again>
     <br>
-    <div class="container ml-5"
+    <div *ngIf="data" class="row">
+    <div class="col-md-4 ml-5"
             style="background-color:lightpink;
             width: 350px; 
-            float: left;
             border-radius: 5px;">
             <form [formGroup]="myForm">
         
@@ -88,11 +89,22 @@
         </div>
         <br>
             </form>
-            <div class="container-fluid">
-            <button  type="button" class="btn btn-primary btn-lg btn-block" (click)="submit()" > confirm</button>
+            <div class="container">
+            <button
+             *ngIf="isLoading== false" 
+             type="button" 
+             class="btn btn-primary btn-lg btn-block " 
+             (click)="submit()" > confirm</button>
+            <!-- <img *ngIf="isLoading" src=
+            "https://i.pinimg.com/originals/26/af/26/26af26707d7d0da6d5bc930788cfc868.gif"
+            width="40" height="40" 
+            > -->
             </div>
             <hr> 
+            
     </div>
+    
+    
      
      
     
@@ -102,12 +114,10 @@
 
 
     <div *ngIf="final.length == 0 "
-        class="container" 
+        class="col-md-4 ml-5"
         style="background-color: lightblue;
         width: 450px;
         height: 100px;
-        margin-right: 350px;
-        float: right;
         border-radius: 5px;
        ">
       <h4 class="text-center" style="color: red;">your card is empty</h4>
@@ -119,12 +129,12 @@
           (click)="toStore()">add items</button>
         </div>
     </div>
+
+  
     <div *ngIf="final.length > 0 "
-         class="container" 
+         class="col-md-4 ml-5" 
          style="background-color: lightblue;
          width: 450px;
-         float: right;
-         margin-right: 250px;
          border-radius: 5px;
         ">
        <h2 class="text-center">your items</h2>
@@ -154,17 +164,18 @@
                 background-color: white;
                 ">
             <p class="text-center" style="font-size: larger;">  Total:{{total() | currency}}</p>
+            
         </div>
   
         <hr>   
         
-    </div>
+    
    
-        
-       
+</div>   
         
    
     
     
+
 
 
