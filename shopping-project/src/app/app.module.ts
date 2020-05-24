@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
-import { PurchaseComponent } from './purchase/purchase.component';
+
 import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
@@ -14,7 +14,6 @@ import { RegistrationComponent } from './registration/registration.component';
     AppComponent,
     ProductsComponent,
     CartComponent,
-    PurchaseComponent,
     RegistrationComponent
   ],
   imports: [
