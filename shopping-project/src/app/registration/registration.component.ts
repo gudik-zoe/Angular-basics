@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators,  } from '@angular/forms';
 import {  Custome } from './custome.validator';
 import { CartServiceService } from '../cart-service.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,10 +13,13 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   final = []
+  isLoading = false
+  message = 'loading'
 
   constructor(private fb:FormBuilder ,
               private service:CartServiceService , 
-              private router:Router) { }
+              private router:Router,
+              private http:HttpClient) { }
   myForm:FormGroup
   total(){
     let sum = 0
@@ -24,8 +28,18 @@ export class RegistrationComponent implements OnInit {
         }
         return sum 
     }
+
+   
   submit(){
-    console.log(this.myForm.value)
+    this.isLoading = true
+    let finalData = []
+    finalData.push(this.myForm.value , this.final)
+    this.service.postData
+    ('https://shopping-project-895a7.firebaseio.com/orders.json',finalData)
+    .subscribe(res => {
+    this.isLoading = false
+      console.log(res)
+    })
   }
 
   edit(){
@@ -33,9 +47,6 @@ export class RegistrationComponent implements OnInit {
   }
   toStore(){
     this.router.navigate(['/products'])
-  }
-  confirm(){
-    console.log(this.final)
   }
   ngOnInit() {
     this.final = this.service.cardItems

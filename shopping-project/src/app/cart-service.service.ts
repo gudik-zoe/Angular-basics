@@ -1,4 +1,5 @@
 import { Injectable , EventEmitter } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @Injectable({
@@ -6,10 +7,16 @@ import { Injectable , EventEmitter } from '@angular/core';
 })
 export class CartServiceService {
   pushArr= new EventEmitter()
+  url = 'https://shopping-project-895a7.firebaseio.com/orders.json'
 
-
+constructor(private http:HttpClient) {}
 
 cardItems = []
+
+postData(link ,data ){
+  return this.http.post(link,data)
+  
+}
 
 add(id){
   this.cardItems.push(this.products[id])
@@ -64,5 +71,5 @@ minus(id){
 
   
 
-  constructor() { }
+ 
 }
