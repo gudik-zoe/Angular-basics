@@ -1,6 +1,6 @@
 <app-buy-again [data]="data"></app-buy-again>
 <br />
-<div *ngIf="data" class="row">
+<div *ngIf="data" class="row mt-5">
   <div
     class="col-md-4 ml-5"
     style="background-color: lightpink; width: 350px; border-radius: 5px;"
@@ -219,7 +219,7 @@
       </div>
       <br />
     </form>
-    <div class="container">
+    <div class="container mt-4">
       <button
         [disabled]="!myForm.valid || this.final.length == 0"
         *ngIf="isLoading == false"
@@ -239,7 +239,7 @@
 
   <div
     *ngIf="final.length == 0"
-    class="col-md-4 ml-5"
+    class="col-md-4 ml-5 mt-4"
     style="
       background-color: lightblue;
       width: 450px;

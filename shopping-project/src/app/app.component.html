@@ -1,28 +1,40 @@
-<nav class="navbar navbar-inverse bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <h2>
     <a
-      class="navbar-link"
-      routerLinkActive="active"
-      style="color: white;"
+      routerLinkActive="active-class"
+      style="cursor: pointer; color: white; margin-left: 30px;"
       routerLink="/products"
       >store</a
     >
   </h2>
+
   <h2>
     <a
-      routerLinkActive="active"
-      style="cursor: pointer; color: white;"
+      routerLinkActive="active-class"
+      style="cursor: pointer; color: white; margin-left: 30px;"
       routerLink="/card"
       >card</a
     >
   </h2>
+
   <h2>
     <a
-      routerLinkActive="active"
-      style="cursor: pointer; color: white;"
+      routerLinkActive="active-class"
+      style="cursor: pointer; color: white; margin-left: 30px;"
       routerLink="/purchase"
       >purchase</a
     >
+  </h2>
+
+  <h2>
+    <button
+      *ngIf="products.length > 0"
+      class="btn btn-success ml-5"
+      type="button"
+      (click)="goToCard()"
+    >
+      go to card
+    </button>
   </h2>
 </nav>
 
