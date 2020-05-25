@@ -1,12 +1,25 @@
-<div class="container-fluid" *ngFor="let product of products">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <h4>{{ product.title }}</h4>
+      <p>
+        type:<em>{{ product.type }}</em>
+      </p>
 
-    <div class="container-fluid">
-        <h3>{{product.title}}</h3>
-        <p>type:<em>{{product.type}}</em> </p>
-        <img src={{product.image}} width="100px" height="100px" />
-        <p class="lead"> price:{{product.price | currency}}</p>
-        <button [disabled]="product.pressed" type="button" class="btn btn-primary" (click)="add(product.id)">add to card</button>
+      <img src="{{ product.image }}" width="100px" height="100px" />
+      <p>
+        difficulty:<em> {{ product.difficulty }} </em>
+      </p>
+      <p class="lead">price:{{ product.price | currency }}</p>
+      <button
+        [disabled]="product.pressed"
+        type="button"
+        class="btn btn-primary"
+        (click)="add(product.id)"
+      >
+        add to card
+      </button>
+      <hr />
     </div>
-    <hr>    
-
+  </div>
 </div>
