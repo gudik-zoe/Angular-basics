@@ -21,8 +21,8 @@ export class CartComponent implements OnInit {
 
 //l'elemento va tolto subito
 remove(id){
-this.service.remove(id)
-this.cardItems = this.cardItems.filter(item => item.id !==id)
+ this.service.remove(id)
+ this.cardItems = this.cardItems.filter(item => item.id !==id)
 }
 // l'elemento non va tolto fino che cambi il route
 // remove2(id){
