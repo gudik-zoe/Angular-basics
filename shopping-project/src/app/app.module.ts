@@ -9,6 +9,9 @@ import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BuyAgainComponent } from './buy-again/buy-again.component';
+import { LapStoreComponent } from './lap-store/lap-store.component';
+import { LapsDetailsComponent } from './laps-details/laps-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -18,6 +21,9 @@ import { BuyAgainComponent } from './buy-again/buy-again.component';
     CartComponent,
     RegistrationComponent,
     BuyAgainComponent,
+    LapStoreComponent,
+    LapsDetailsComponent,
+    PageNotFoundComponent,
     
   ],
   imports: [

@@ -1,16 +1,16 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Injectable,} from '@angular/core';
+import { HttpClient,  } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartServiceService {
-  pushArr = new EventEmitter();
-  url = 'https://shopping-project-895a7.firebaseio.com/orders.json';
+ 
 
   constructor(private http: HttpClient) {}
 
-  cardItems = [];
+
+cardItems = [];
 
   postData(link, data) {
     return this.http.post(link, data);
@@ -20,10 +20,16 @@ export class CartServiceService {
     this.cardItems.push(this.products[id]);
     this.products[id].pressed = true;
   }
+ 
+  addLap(id){
+    this.cardItems.push(this.laps[id])
+    this.laps[id].pressed=true
+  }
 
   remove(id) {
     this.cardItems = this.cardItems.filter((item) => item.id !== id);
     this.products[id].pressed = false;
+    this.laps[id].pressed = false
   }
 
   getProducts() {
@@ -35,15 +41,20 @@ export class CartServiceService {
 
   plus(id) {
     this.products[id].quantity++;
+    this.laps[id].quantity++
   }
 
   minus(id) {
-    this.products[id].quantity--;
+    this.products[id].quantity--
+    this.laps[id].quantity--
   }
 
   refresh() {
     for (let i of this.products) {
       i.pressed = false;
+    }
+    for (let o of this.laps){
+      o.pressed = false
     }
   }
 
@@ -54,6 +65,7 @@ export class CartServiceService {
     }
     return sum;
   }
+  
 
   products = [
     {
@@ -156,4 +168,81 @@ export class CartServiceService {
       pressed: false,
     },
   ];
+
+  laps = [
+    {
+        "id": "0",
+        title:'lap top',
+        "type": "Huawei MateBook X Pro",
+        "image": "data:image/jpeg;base64,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",
+        "cpu": "Intel Core i7, 8th generation",
+        "ram": "8GB",
+        "storage": "512 GB SSD",
+        "pressed":false,
+        quantity: 1,
+        "screen": "13.9-inch, 3K (3,000 x 2,080)",
+        "price": "1499",
+        "description": "The Huawei MateBook X Pro is our pick for the best laptop money can buy in 2018. This is a gorgeously-designed laptop with a stunning screen (albeit with a rather odd aspect ratio), and it comes packed with cutting edge components that allows it to perform brilliantly, and a battery life that runs rings around many of its rivals. It also has a very competitive price, giving you features, design and performance for quite a bit less money."
+    },
+    {
+        "id": "1",
+        title:'lap top',
+        "type": "Apple Macbook Pro 2018",
+        "image": "https://tse4.mm.bing.net/th?id=OIP.KS0Fcp6dwJCxtsSoahKAQwHaHa&pid=Api&P=0&w=300&h=300",
+        "cpu": "6-core Intel i7, 8th generation",
+        "ram": "16GB",
+        quantity: 1,
+        "pressed":false,
+        "storage": "1TB GB SSD",
+        "screen": "15-inch Retina display",
+        "price": "3199",
+        "description": "If you're after the latest and greatest laptop from Apple, we suggest you look into the 2018 model of the 15-inch MacBook Pro with Touch Bar. The headline Touch Bar – a thin OLED display at the top of the keyboard which can be used for any number of things, whether that be auto-suggesting words as you type or offering Touch ID so you can log in with just your fingerprint – is of course included. It's certainly retained Apple's sense of style, but it comes at a cost. This is a pricey machine, so you may want to consider one of the Windows alternatives. But, if you're a steadfast Apple diehard, this is definitely the best laptop for you!"
+    },
+    {
+        "id": "2",
+        title:'lap top',
+        "type": "Dell XPS 13",
+        "image": "https://i.ytimg.com/vi/4HnKi_s37-I/maxresdefault.jpg",
+        "cpu": "Intel Core i7, 8th generation",
+        "ram": "16GB",
+        "pressed":false,
+        quantity: 1,
+        "storage": "512 GB SSD",
+        "screen": "13.3-inch, Full HD",
+        "price": "1199",
+        "description": "The Dell XPS 13 is an absolutely brilliant laptop. The 2018 version rocks an 8th-generation Intel Core i5 or i7 processor and a bezel-less ‘Infinity Edge’ display, this Dell XPS 13 continues to be the most popular Windows laptop in the world. What’s more, there’s a wide range of customization options, so you can really make the Dell XPS 13 the best laptop for your needs. "
+    },
+    {
+        "id": "3",
+        title:'lap top',
+        "type": "Asus ZenBook Flip S",
+        "image": "https://tse4.mm.bing.net/th?id=OIP.5N4EHA91zf9A3TcjfRZXLQHaFX&pid=Api&P=0&w=217&h=158",
+        "cpu": "Intel Core i7, 8th generation",
+        "ram": "16GB",
+        "pressed":false,
+        quantity: 1,
+        "storage": "512 GB SSD",
+        "screen": "13.3-inch, Full HD touchscreen",
+        "price": "1399",
+        "description": "Asus has struck gold with its new refresh of its ZenBook Flip S 2-in-1 laptop. With a new Kaby Lake R 8th-generation processor powering the device, plenty of RAM and a super-fast PCIe SSD in certain models, this is an absolutely stunning laptop. Its 2-in-1 design means you can use it as both a laptop and a tablet, and while it's not as affordable as some other machines, if you have the budget you'll be really happy with this fantastic device."
+    },
+    {
+        "id": "4",
+        title:'lap top',
+        "type": "Samsung Notebook 9",
+        "image": "https://images-na.ssl-images-amazon.com/images/I/81SdPqvMhuL._AC_SX466_.jpg",
+        "cpu": "Intel Core i7, 8th generation",
+        "ram": "16GB",
+        quantity: 1,
+        "pressed":false,
+        "storage": "256 GB SSD",
+        "screen": "15-inch, Full HD",
+        "price": "1499",
+        "description": "While it may not have the best keyboard in the world, the Samsung Notebook 9 is still one of the best laptops you can buy in 2018. Packed with more horsepower than some MacBook Pros,but at a much lower price, Samsung has crafted a laptop that has just as much substance as it does style. Plus, on top of its killer specs, it’s lightweight and thin, making this one of the most portable 15-inch laptops you can buy today."
+    }
+]
+getLaps (){
+  return this.laps
+}
+
 }

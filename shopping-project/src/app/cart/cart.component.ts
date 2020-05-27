@@ -10,17 +10,12 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
   cardItems = [];
   constructor(private service: CartServiceService, private router: Router) {}
-
   //l'elemento va tolto subito
   remove(id) {
     this.service.remove(id);
     this.cardItems = this.cardItems.filter((item) => item.id !== id);
   }
-  // l'elemento non va tolto fino che cambi il route
-  // remove2(id){
-  //   this.service.remove(id)
-  // }
-
+  
   total() {
     return this.service.total(this.cardItems);
   }
@@ -37,10 +32,12 @@ export class CartComponent implements OnInit {
   }
 
   purchase() {
-    this.router.navigate(['/purchase']);
+      this.router.navigate(['/purchase'])
   }
+    
+
 
   ngOnInit() {
-    this.cardItems = this.service.getCardItems();
+    this.cardItems = this.service.getCardItems()
   }
 }
