@@ -42,6 +42,7 @@ export class RegistrationComponent implements OnInit {
         this.final = [];
         this.data = false;
 
+        this.service.refresh()
         console.log(res);
       });
   }

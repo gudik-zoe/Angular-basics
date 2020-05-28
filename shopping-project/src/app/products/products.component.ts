@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from '../cart-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -9,11 +10,16 @@ import { CartServiceService } from '../cart-service.service';
 export class ProductsComponent implements OnInit {
   products = [];
   cardItems = [];
-  constructor(private service: CartServiceService) {}
+  constructor(private service: CartServiceService ,
+              private router :Router) {}
 
   add(id) {
     this.service.add(id);
   }
+    goToDescription(id){
+    this.router.navigate(['/laps-details' ,id])
+  }
+ 
 
   ngOnInit() {
     this.products = this.service.getProducts();

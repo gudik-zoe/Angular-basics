@@ -15,7 +15,7 @@ export class LapsDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.id =  parseInt(this.route.snapshot.paramMap.get('id'))
-    this.details = this.service.getLaps()
+    this.details = this.service.getProducts()
   }
 
 }

@@ -14,6 +14,12 @@
         difficulty:<em> {{ product.difficulty }} </em>
       </p>
       <p class="lead">price:{{ product.price | currency }}</p>
+      <button 
+      *ngIf="product.description"
+      class="btn btn-info btn-sm mb-2"
+       type="button" 
+       (click)="goToDescription(product.id)" >description </button>
+      <br>
       <button
         [disabled]="product.pressed"
         type="button"
@@ -22,6 +28,7 @@
       >
         add to card
       </button>
+
       
       <hr />
     </div>

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cardItems = [];
+  cardItems = []
   constructor(private service: CartServiceService, private router: Router) {}
   //l'elemento va tolto subito
   remove(id) {
@@ -19,10 +19,10 @@ export class CartComponent implements OnInit {
   total() {
     return this.service.total(this.cardItems);
   }
+plus(id){
+  this.service.plus(id)
+}
 
-  plusOne(id) {
-    this.service.plus(id);
-  }
   toStore() {
     this.router.navigate(['/products']);
   }

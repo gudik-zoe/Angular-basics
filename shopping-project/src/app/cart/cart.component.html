@@ -19,7 +19,7 @@
         *ngFor="let pro of cardItems"
       >
         <td>{{ pro.title }}</td>
-        <td>{{ pro.type }}</td>
+        <td>{{ pro.type }} </td>
         <td><img src="{{ pro.image }}" width="20" height="20" /></td>
         <td>
           <button
@@ -34,7 +34,7 @@
           <button
             class="btn btn-success btn-sm"
             type="button"
-            (click)="plusOne(pro.id)"
+            (click)="plus(pro.id)"
           >
             +
           </button>
@@ -62,15 +62,10 @@
           </button>
         </td>
       </tr>
-      <!-- <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>  -->
     </tbody>
   </table>
 </div>
+
 
 <div
   *ngIf="cardItems.length == 0"
