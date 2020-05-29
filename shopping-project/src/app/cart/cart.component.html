@@ -18,7 +18,7 @@
         [class]="pro.id % 2 !== 0 ? 'color' : ''"
         *ngFor="let pro of cardItems"
       >
-        <td>{{ pro.title }}</td>
+        <td>{{ pro.title }} , {{pro.uniqueId}}</td>
         <td>{{ pro.type }} </td>
         <td><img src="{{ pro.image }}" width="20" height="20" /></td>
         <td>
@@ -26,7 +26,7 @@
             [disabled]="pro.quantity === 0"
             class="btn btn-danger btn-sm"
             type="button"
-            (click)="minusOne(pro.id)"
+             (click)="minus(pro.id , pro.title)" 
           >
             -
           </button>
@@ -34,7 +34,7 @@
           <button
             class="btn btn-success btn-sm"
             type="button"
-            (click)="plus(pro.id)"
+            (click)="plus(pro.id , pro.title)"
           >
             +
           </button>
@@ -44,7 +44,7 @@
         <button
           type="button"
           class="btn btn-danger btn-sm mt-2"
-          (click)="remove(pro.id)"
+          (click)="remove(pro.uniqueId , pro.id)"
         >
           x
         </button>

@@ -11,24 +11,24 @@ export class CartComponent implements OnInit {
   cardItems = []
   constructor(private service: CartServiceService, private router: Router) {}
   //l'elemento va tolto subito
-  remove(id) {
-    this.service.remove(id);
-    this.cardItems = this.cardItems.filter((item) => item.id !== id);
+  remove(uniqueId , id) {
+    this.service.remove(uniqueId , id)
+     this.cardItems = this.cardItems.filter(item => item.uniqueId !== uniqueId)
   }
   
   total() {
     return this.service.total(this.cardItems);
   }
-plus(id){
-  this.service.plus(id)
+plus (id , title){
+  this.service.plus(id , title)
+}
+
+minus (id , title){
+  this.service.minus(id , title)
 }
 
   toStore() {
     this.router.navigate(['/products']);
-  }
-
-  minusOne(id) {
-    this.service.minus(id);
   }
 
   purchase() {
@@ -38,6 +38,6 @@ plus(id){
 
 
   ngOnInit() {
-    this.cardItems = this.service.getCardItems()
+   this.cardItems = this.service.getCardItems()
   }
 }

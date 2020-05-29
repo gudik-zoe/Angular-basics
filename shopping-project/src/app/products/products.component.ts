@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
               private router :Router) {}
 
   add(id) {
-    this.service.add(id);
+    this.service.add(id , this.products);
   }
     goToDescription(id){
     this.router.navigate(['/laps-details' ,id])
