@@ -12,6 +12,7 @@ import { BuyAgainComponent } from './buy-again/buy-again.component';
  import { LapStoreComponent } from './lap-store/lap-store.component';
 import { LapsDetailsComponent } from './laps-details/laps-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
      LapStoreComponent,
     LapsDetailsComponent,
     PageNotFoundComponent,
+    AuthComponent,
     
   ],
   imports: [
