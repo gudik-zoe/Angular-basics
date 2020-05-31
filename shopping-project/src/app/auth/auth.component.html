@@ -43,8 +43,7 @@
         </div>
         
     </form>
-    <button [disabled]="signUpForm.invalid" class="btn btn-primary" type="button" (click)="submit()">sign up</button>
-    
+  <button [disabled]="signUpForm.invalid" class="btn btn-primary" type="button" (click)="submit()">sign up</button>     <img style="margin-left: 5px;" *ngIf="loading" src="https://resources.humandx.org/static/img/loading_spinner.gif" width="30" height="30" >
 </div>
 
 
@@ -76,8 +75,7 @@
         </div>
         
     </form>
-    <button [disabled]="signInForm.invalid" class="btn btn-primary" type="button" (click)="submit()">sign In</button>
-    
+    <button [disabled]="signInForm.invalid" class="btn btn-primary" type="button" (click)="submit()">sign In</button> <img style="margin-left: 5px;" *ngIf="loadingService.length > 0" src="https://resources.humandx.org/static/img/loading_spinner.gif" width="30" height="30" >
     </div>
 </div>
     <br>

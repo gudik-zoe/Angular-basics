@@ -18,12 +18,8 @@ export class RegistrationComponent implements OnInit {
   message = 'loading';
   data = true;
   email = []
-  para
   emailGetter(){
-    for (let i of this.email){
-      this.para = i
-    }
-    return this.para
+    return this.email
   }
   constructor(
     private fb: FormBuilder,

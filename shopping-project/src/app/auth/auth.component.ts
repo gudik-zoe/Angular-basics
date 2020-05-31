@@ -22,6 +22,9 @@ signUpForm : FormGroup
 signInForm:FormGroup
 name
 signIn = true
+loading = false
+
+loadingService = []
 
 getName(){
 return this.name = this.signInForm.get('email').value 
@@ -36,16 +39,19 @@ switch(){
 }
 
 submit(){
+  this.loading = true 
  if (!this.signIn){
     let email = this.signUpForm.get('email').value
    let password = this.signUpForm.get('password').value
   this.service.signUp(email , password).subscribe(
   data => {
+    this.loading = false
     console.log(data)
-    this.name = email
+   
   },
   error=> {
     console.log(error)
+    this.loading = false
   }
 )
 
@@ -62,6 +68,7 @@ else {
 
 
   ngOnInit() {
+    this.loadingService= this.service.loading
     this.loggedIn = this.service.get()
     this.signUpForm =this.fb.group({
       email:['' , [Validators.required , Validators.email]],
