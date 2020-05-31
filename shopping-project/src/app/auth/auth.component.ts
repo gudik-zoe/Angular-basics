@@ -26,6 +26,7 @@ loading = false
 errorMessage
 error = false
 loggedIn = []
+signUpsuccess = false
 
 getName(){
 return this.name = this.signInForm.get('email').value 
@@ -43,6 +44,10 @@ closeError(){
   this.signInForm.reset()
   this.signUpForm.reset()
 }
+toSignIn(){
+  this.signIn = true
+  this.signUpsuccess = false
+}
 
 submit(){
   this.loading = true 
@@ -52,6 +57,7 @@ submit(){
   this.service.signUp(email , password).subscribe(
   data => {
     this.loading = false
+    this.signUpsuccess = true
     console.log('succeed')
    
   },
