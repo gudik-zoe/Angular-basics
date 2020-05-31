@@ -18,9 +18,7 @@ export class RegistrationComponent implements OnInit {
   message = 'loading';
   data = true;
   email = []
-  emailGetter(){
-    return this.email
-  }
+  
   constructor(
     private fb: FormBuilder,
     private service: CartServiceService,
@@ -64,9 +62,9 @@ export class RegistrationComponent implements OnInit {
 
     this.myForm = this.fb.group(
       {
-        name: ['', Validators.required],
-        lastName: ['', Validators.required],
-        email: [this.emailGetter(), [Validators.required , Validators.email]],
+        name: [this.email[1], Validators.required],
+        lastName: [this.email[2], Validators.required],
+        email: [this.email[0], [Validators.required , Validators.email]],
         // password: ['', [Validators.required, Validators.minLength(6)]],
         // confirmPassword: ['', Validators.required],
         phoneNumber: ['', Validators.required],

@@ -3,8 +3,8 @@
 <div class="container mt-5" style="background-color: lightgray; width: 650px; border-radius: 10px;">
     <br>
     <h3 class="text-center"> welcome to Shopping-Project!</h3>
-    <h5 class="text-center">Sign in to access our full services</h5>
-    <p *ngIf="loggedIn.length > 0"> welcome {{getName() | slice:0:5 }}!
+    <h5 class="text-center" *ngIf="loggedIn.length == 0">Sign in to access our full services</h5>
+    <p *ngIf="loggedIn.length > 0"> welcome {{getName}}
         <button type="button" class="btn btn-success" (click)="toStore()"> go to store</button></p> 
 
 
@@ -18,6 +18,45 @@
     </div>
     <br>
     <form [formGroup]="signUpForm">
+        <div class="row">
+        <div class="col-md-4">
+            
+            <label>name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              [class.is-invalid]="
+                !signUpForm.get('name').valid && signUpForm.get('name').touched
+              "
+            />
+            <small
+              class="text-danger"
+              *ngIf="signUpForm.get('name').invalid && signUpForm.get('name').touched"
+            >
+              this field is reqired
+            </small>
+          </div>
+          <div class="col-md-4">
+            <label>lastName</label>
+            <input
+              type="text"
+              formControlName="lastName"
+              class="form-control"
+              [class.is-invalid]="
+                !signUpForm.get('lastName').valid && signUpForm.get('lastName').touched
+              "
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                signUpForm.get('lastName').invalid && signUpForm.get('lastName').touched
+              "
+            >
+              this field is reqired
+            </small>
+          </div>
+        </div>
         <div class="form-group">
             <label>Email</label>
             <input type="email"

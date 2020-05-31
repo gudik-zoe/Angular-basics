@@ -29,7 +29,7 @@ loggedIn = []
 signUpsuccess = false
 
 getName(){
-return this.name = this.signInForm.get('email').value 
+return this.name = this.signInForm.get('name').value 
 }
 
 toStore(){
@@ -83,7 +83,7 @@ else {
   let password = this.signInForm.get('password').value
   this.service.signIn(email,password).subscribe(data => {
     this.loading = false
-     this.loggedIn.push(email)
+     this.loggedIn.push(email , this.signUpForm.get('name').value , this.signUpForm.get('lastName').value)
     console.log('it worked ')
   }
   ,error => {
@@ -112,6 +112,8 @@ else {
   ngOnInit() {
     this.loggedIn = this.service.get()
     this.signUpForm =this.fb.group({
+      name:['',Validators.required],
+      lastName:['',Validators.required],
       email:['' , [Validators.required , Validators.email]],
       password:['' , [Validators.required , Validators.minLength(6)]],
       confirmPassword:['' , Validators.required]
