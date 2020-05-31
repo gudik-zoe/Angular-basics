@@ -76,7 +76,12 @@
         
     </form>
     <button [disabled]="signInForm.invalid" class="btn btn-primary" type="button" (click)="submit()">sign In</button> <img style="margin-left: 5px;" *ngIf="loading" src="http://az779572.vo.msecnd.net/res/content/images/loading_spin_grey.gif%7C11ezlroiohbdwk2imlrjrbw2.gif" width="30" height="30" >
-    </div>
+    
+    </div> 
 </div>
-    <br>
+<div *ngIf="error" class="container">
+<span class="text-danger ml-2" style="font-weight: bold;">{{errorMessage}}</span> <button class="btn btn-danger btn-sm" type="button" (click)="closeError()">ok</button>
+</div>
+<br>
+    
 </div>

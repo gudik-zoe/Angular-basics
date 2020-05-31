@@ -14,7 +14,7 @@ export class AuthComponent implements OnInit {
     private service:AuthService , 
     private route:Router) { }
 
-  loggedIn = []
+  
 
   formError = false
 signUpForm : FormGroup
@@ -24,8 +24,8 @@ name
 signIn = true
 loading = false
 errorMessage
-
-loadingService = []
+error = false
+loggedIn = []
 
 getName(){
 return this.name = this.signInForm.get('email').value 
@@ -37,6 +37,11 @@ toStore(){
 
 switch(){
   this.signIn = !this.signIn
+}
+closeError(){
+  this.error = false
+  this.signInForm.reset()
+  this.signUpForm.reset()
 }
 
 submit(){
@@ -53,6 +58,15 @@ submit(){
   error=> {
     console.log(error)
     this.loading = false
+    this.error = true
+    if(error.error.error.message == 'EMAIL_EXISTS'){
+      this.errorMessage ='the mail already exists'
+      }
+
+      else {
+        this.error = true 
+        this.errorMessage = 'unknown error occured'
+      }
   }
 )
 
@@ -63,21 +77,22 @@ else {
   let password = this.signInForm.get('password').value
   this.service.signIn(email,password).subscribe(data => {
     this.loading = false
-    this.loggedIn.push(email)
+     this.loggedIn.push(email)
     console.log('it worked ')
   }
   ,error => {
       this.loading = false
+      this.error = true 
       console.log('error')
  
       if (error.error.error.message == 'EMAIL_NOT_FOUND'){
-        this.errorMessage = 'email not found'
+        this.errorMessage = 'email not found!'
     }
     else if (error.error.error.message == 'INVALID_PASSWORD'){
-        this.errorMessage = 'incorrect password'
+        this.errorMessage = 'incorrect password!'
     }
     else {
-    this.errorMessage = 'dono what happened'
+    this.errorMessage = 'unknown error occured make sure you entered the correct credentials'
     }
   })
   }
