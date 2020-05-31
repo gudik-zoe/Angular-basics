@@ -23,6 +23,7 @@ signInForm:FormGroup
 name
 signIn = true
 loading = false
+errorMessage
 
 loadingService = []
 
@@ -46,7 +47,7 @@ submit(){
   this.service.signUp(email , password).subscribe(
   data => {
     this.loading = false
-    console.log(data)
+    console.log('succeed')
    
   },
   error=> {
@@ -57,18 +58,37 @@ submit(){
 
 }
 else {
+  this.loading = true 
   let email = this.signInForm.get('email').value
   let password = this.signInForm.get('password').value
-  this.service.signIn(email,password)
+  this.service.signIn(email,password).subscribe(data => {
+    this.loading = false
+    this.loggedIn.push(email)
+    console.log('it worked ')
+  }
+  ,error => {
+      this.loading = false
+      console.log('error')
+ 
+      if (error.error.error.message == 'EMAIL_NOT_FOUND'){
+        this.errorMessage = 'email not found'
+    }
+    else if (error.error.error.message == 'INVALID_PASSWORD'){
+        this.errorMessage = 'incorrect password'
+    }
+    else {
+    this.errorMessage = 'dono what happened'
+    }
+  })
+  }
 }
-  
-}
+
+
   
 
 
 
   ngOnInit() {
-    this.loadingService= this.service.loading
     this.loggedIn = this.service.get()
     this.signUpForm =this.fb.group({
       email:['' , [Validators.required , Validators.email]],
@@ -81,5 +101,6 @@ this.signInForm =this.fb.group({
   password:['' , [Validators.required , Validators.minLength(6)]],
   })
 }
+
 }
 
