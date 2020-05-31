@@ -4,7 +4,7 @@
     <br>
     <h3 class="text-center"> welcome to Shopping-Project!</h3>
     <h5 class="text-center" *ngIf="loggedIn.length == 0">Sign in to access our full services</h5>
-    <p *ngIf="loggedIn.length > 0"> welcome {{getName}}
+    <p *ngIf="loggedIn.length > 0"> welcome enjoy shopping!
         <button type="button" class="btn btn-success" (click)="toStore()"> go to store</button></p> 
 
 
@@ -18,7 +18,7 @@
     </div>
     <br>
     <form [formGroup]="signUpForm">
-        <div class="row">
+        <!-- <div class="row">
         <div class="col-md-4">
             
             <label>name</label>
@@ -56,7 +56,7 @@
               this field is reqired
             </small>
           </div>
-        </div>
+        </div> -->
         <div class="form-group">
             <label>Email</label>
             <input type="email"

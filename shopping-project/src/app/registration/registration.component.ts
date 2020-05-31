@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
   isLoading = false;
   message = 'loading';
   data = true;
-  email = []
+  email = []  
   
   constructor(
     private fb: FormBuilder,
@@ -62,8 +62,8 @@ export class RegistrationComponent implements OnInit {
 
     this.myForm = this.fb.group(
       {
-        name: [this.email[1], Validators.required],
-        lastName: [this.email[2], Validators.required],
+        name: ['', Validators.required],
+        lastName: ['', Validators.required],
         email: [this.email[0], [Validators.required , Validators.email]],
         // password: ['', [Validators.required, Validators.minLength(6)]],
         // confirmPassword: ['', Validators.required],
