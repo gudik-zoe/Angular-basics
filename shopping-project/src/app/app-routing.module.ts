@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: '', component: ProductsComponent },
+  { path: '', component: AuthComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'products', component: ProductsComponent },
   {path : 'lap-store' , component:LapStoreComponent},

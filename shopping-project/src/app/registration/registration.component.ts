@@ -4,6 +4,7 @@ import { Custome } from './custome.validator';
 import { CartServiceService } from '../cart-service.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,11 +17,19 @@ export class RegistrationComponent implements OnInit {
   isLoading = false;
   message = 'loading';
   data = true;
-
+  email = []
+  para
+  emailGetter(){
+    for (let i of this.email){
+      this.para = i
+    }
+    return this.para
+  }
   constructor(
     private fb: FormBuilder,
     private service: CartServiceService,
     private router: Router,
+    private authService:AuthService,
     private http: HttpClient
   ) {}
   myForm: FormGroup;
@@ -54,21 +63,22 @@ export class RegistrationComponent implements OnInit {
     this.router.navigate(['/products']);
   }
   ngOnInit() {
+    this.email= this.authService.get()
     this.final = this.service.getCardItems();
 
     this.myForm = this.fb.group(
       {
         name: ['', Validators.required],
         lastName: ['', Validators.required],
-        email: ['', Validators.required],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
+        email: [this.emailGetter(), [Validators.required , Validators.email]],
+        // password: ['', [Validators.required, Validators.minLength(6)]],
+        // confirmPassword: ['', Validators.required],
         phoneNumber: ['', Validators.required],
         city: ['', Validators.required],
         province: ['', Validators.required],
         streetNumber: ['', Validators.required],
       },
-      { validator: [Custome.confirmation, Custome.number] }
+      { validator: [ Custome.number] }
     );
   }
 }
