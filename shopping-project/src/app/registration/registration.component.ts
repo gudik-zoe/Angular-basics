@@ -17,13 +17,13 @@ export class RegistrationComponent implements OnInit {
   isLoading = false;
   message = 'loading';
   data = true;
-  email = []  
-  
+  email = [];
+
   constructor(
     private fb: FormBuilder,
     private service: CartServiceService,
     private router: Router,
-    private authService:AuthService,
+    private authService: AuthService,
     private http: HttpClient
   ) {}
   myForm: FormGroup;
@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit {
         this.final = [];
         this.data = false;
 
-        this.service.refresh()
+        this.service.refresh();
         console.log(res);
       });
   }
@@ -57,22 +57,19 @@ export class RegistrationComponent implements OnInit {
     this.router.navigate(['/products']);
   }
   ngOnInit() {
-    this.email= this.authService.get()
+    this.email = this.authService.get();
     this.final = this.service.getCardItems();
 
-    this.myForm = this.fb.group(
-      {
-        name: ['', Validators.required],
-        lastName: ['', Validators.required],
-        email: [this.email[0], [Validators.required , Validators.email]],
-        // password: ['', [Validators.required, Validators.minLength(6)]],
-        // confirmPassword: ['', Validators.required],
-        phoneNumber: ['', Validators.required],
-        city: ['', Validators.required],
-        province: ['', Validators.required],
-        streetNumber: ['', Validators.required],
-      },
-      { validator: [ Custome.number] }
-    );
+    this.myForm = this.fb.group({
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: [this.email[0], [Validators.required, Validators.email]],
+      // password: ['', [Validators.required, Validators.minLength(6)]],
+      // confirmPassword: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      city: ['', Validators.required],
+      province: ['', Validators.required],
+      streetNumber: ['', Validators.required],
+    });
   }
 }
