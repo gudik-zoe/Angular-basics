@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Custome } from './validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -8,7 +9,8 @@ import { Custome } from './validator';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent implements OnInit {
-  constructor(private fb: FormBuilder ) { }
+  constructor(private fb: FormBuilder,
+              private route:Router ) { }
   signUp = true
 
   submit(){
@@ -19,7 +21,7 @@ export class LogInComponent implements OnInit {
     this.signUp =!this.signUp
   }
   signIn(){
-    console.log('signed in')
+    this.route.navigate(['/home-page'])
   }
 signUpForm:FormGroup
 signInForm:FormGroup
