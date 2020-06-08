@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="height: 72px;">
+    <h3 style="color: white;">home page</h3>
+</nav>
+<br>
+<div class="container-fluid mt-5" style="background-color: lightcyan;">
+    <div class="row">
+        <div id="first-div" class="col-md-2" style="background-color: lightblue;">
+            <li> user's name</li>
+            <li><i class="fa fa-camera"></i>asd</li>
+            <li><i class="fa fa-cutlery"></i>asd</li>
+            <li><i class="fa fa-camera"></i>asd</li>
+            <li><i class="fa fa-cutlery"></i>asd</li>
+            <li><i class="fa fa-camera"></i>asd</li>
+            <li><i class="fa fa-cutlery"></i>asd</li>
+            <li><i class="fa fa-camera"></i>asd</li>
+            <li><i class="fa fa-cutlery"></i>asd</li>
+            <li><i class="fa fa-camera"></i>asd</li>
+            <li><i class="fa fa-cutlery"></i>asd</li>
+            <li><i class="fa fa-camera"></i>asd</li>
+            <li><i class="fa fa-cutlery"></i>asd</li>
+        </div>
+
+        <div class="col-md-7">
+            <div *ngFor="let i of images" class="center">
+                <img src="{{i}}" width="500" height="300px" />
+                <br>
+               <span> <button class="btn btn-info btn-sm">like</button>
+                <button class="btn btn-info btn-sm">comment</button>
+                <button class="btn btn-info btn-sm">share</button>
+            </span>
+            </div>
+            <br>
+        </div>
+         <div id="last-div" class="col-md-3" style="background-color: lightblue;">
+            <h3>friends</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod dignissimos quasi error dolores rerum, sed inventore harum suscipit nihil saepe! Autem unde deleniti consequatur esse nisi. Neque, at. Ducimus, minus.</p>
+        </div>
+    </div>
+</div>
