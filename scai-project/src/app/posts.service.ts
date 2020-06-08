@@ -10,9 +10,18 @@ export class PostsService {
 like(id){
   this.posts[id].likes = this.posts[id].likes + 1
 }
+disLike(id){
+  this.posts[id].likes = this.posts[id].likes - 1
+}
 
 comment(id , data ){
+  if (data === null || data === ''){
+    return false
+  }
+  else {
   this.posts[id].comments.push(data)
+  console.log(this.posts[id].comments.length)
+  }
 }
 
 share(){
@@ -24,7 +33,7 @@ share(){
     {image:'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
     description:'such a nice photo', 
     likes:20,
-    comments:['first comment' , 'second comment'],
+    comments:['first comment'],
     id:0
     }
   ,{image:'https://th.tvblog.it/V6HnVTZkLCDQ7iSQDveMVZFbWW4=/fit-in/655xorig/https%3A%2F%2Fmedia.tvblog.it%2F5%2F518%2Ffriends.jpg',

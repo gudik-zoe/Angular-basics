@@ -23,16 +23,20 @@
         <div class="col-md-7 mt-3">
             <div *ngFor="let post of posts" class="text-center">
                 <img src="{{post.image}}" width="500" height="300px" />
+                <br>
+                <div class="spane">
                 <p>likes:{{post.likes}}</p>
-                <p>description:{{post.description}}</p>
-
-                <li *ngFor="let i of post.comments">{{i}}</li>
+                <p *ngIf="post.comments.length > 1">{{post.comments.length}}comments</p>
+                <p *ngIf="post.comments.length <= 1">{{post.comments.length}}comment</p>
+                </div>
+                 <p  *ngIf="post.comments.length > 0">comments:{{post.comments.length}}<li *ngFor="let i of post.comments">{{i}}</li></p>
                 <hr>
-               <span> <button class="btn btn-info btn-sm" (click)="like(post.id)">like</button> |
+               <span> <button  class="btn btn-info btn-sm" (click)="like(post.id)"><span><i *ngIf="likeBtn" class="fa fa-thumbs-down" aria-hidden="true"></i><i *ngIf="!likeBtn" class="fa fa-thumbs-up" aria-hidden="true"></i></span>{{likeBtn ? 'unlike' : 'like'}}</button> |
                 
-                <button class="btn btn-info btn-sm">share</button>
-                <input [(ngModel)]="data" style="width: 300px;" placeholder="comment" >
-                <button class="btn btn-info btn-sm" (click)="comment(post.id , data)">comment</button>
+                <button class="btn btn-info btn-sm"><span><i class="fa fa-share-alt" aria-hidden="true"></i></span>share</button>
+                <input #data style="width: 300px;" placeholder="comment here" >
+                <button
+                 class="btn btn-info btn-sm" (click)="comment(post.id , data.value)"><span><i class="fa fa-comments" aria-hidden="true"></i></span>comment</button>
                 <hr>
                 </span>
             </div>
