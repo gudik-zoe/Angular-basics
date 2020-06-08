@@ -7,11 +7,20 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-images = []
+posts = []
+data
   constructor( private service:PostsService) { }
 
+  like(id){
+    this.service.like(id)
+  }
+
+  comment(id , data){
+     this.service.comment(id , data)
+  }
+
   ngOnInit() {
-    this.images = this.service.posts
+    this.posts = this.service.posts
   }
 
 }

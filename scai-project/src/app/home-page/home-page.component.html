@@ -20,14 +20,21 @@
             <li><i class="fa fa-cutlery"></i>asd</li>
         </div>
 
-        <div class="col-md-7">
-            <div *ngFor="let i of images" class="center">
-                <img src="{{i}}" width="500" height="300px" />
-                <br>
-               <span> <button class="btn btn-info btn-sm">like</button>
-                <button class="btn btn-info btn-sm">comment</button>
+        <div class="col-md-7 mt-3">
+            <div *ngFor="let post of posts" class="text-center">
+                <img src="{{post.image}}" width="500" height="300px" />
+                <p>likes:{{post.likes}}</p>
+                <p>description:{{post.description}}</p>
+
+                <li *ngFor="let i of post.comments">{{i}}</li>
+                <hr>
+               <span> <button class="btn btn-info btn-sm" (click)="like(post.id)">like</button> |
+                
                 <button class="btn btn-info btn-sm">share</button>
-            </span>
+                <input [(ngModel)]="data" style="width: 300px;" placeholder="comment" >
+                <button class="btn btn-info btn-sm" (click)="comment(post.id , data)">comment</button>
+                <hr>
+                </span>
             </div>
             <br>
         </div>
