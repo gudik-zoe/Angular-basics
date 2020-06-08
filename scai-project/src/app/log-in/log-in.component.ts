@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Custome } from './validator';
 
 @Component({
   selector: 'app-log-in',
@@ -15,10 +16,10 @@ export class LogInComponent implements OnInit {
   }
 
   switch(){
-    this.signUp = false
+    this.signUp =!this.signUp
   }
   signIn(){
-    console.log('sign in')
+    console.log('signed in')
   }
 signUpForm:FormGroup
 signInForm:FormGroup
@@ -26,14 +27,14 @@ signInForm:FormGroup
     this.signUpForm = this.fb.group({
       name: ['' , Validators.required],
       lastName:['' , Validators.required],
-      email:['' , Validators.required],
-      password: ['' , Validators.required],
+      email:['' , [Validators.required,Validators.email]],
+      password: ['' , [Validators.required, Validators.minLength(6)]],
       confirmPassword:['' , Validators.required],
       gender:['', Validators.required],
-    })
+    }, {validator: [Custome.PasswordConfirmation]})
     this.signInForm = this.fb.group({
-      email:[''],
-      password:['']
+      email:['' , [Validators.required, Validators.email]],
+      password:['' , Validators.required]
     })
   }
 
