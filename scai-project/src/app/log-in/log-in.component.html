@@ -1,7 +1,30 @@
 <div class="container-fluid" style="background-color: lightblue;">
     <div class="row">
+        <div *ngIf="!signUp" class="col-md-4">
+            <div class="container-fluid">
+                <form [formGroup]="signInForm">
+                    <div class="form-group">
+                       
+                        <input type="email" 
+                        placeholder="Email"
+                        class="form-control"
+                         formControlName="email"
+                        >
+                    </div>
+                    <div class="form-group">
+                       
+                        <input type="password" 
+                        placeholder="Password"
+                        class="form-control"
+                         formControlName="password"
+                        >
+                    </div>
+                    <button class="btn btn-primary" (click)="signIn()">Log In</button>
+                </form>
+            </div>
+        </div>
 
-        <div class="col-md-4">
+        <div *ngIf="signUp" class="col-md-4">
             <div class="container-fluid mt-5">
                 <form [formGroup]="signUpForm" >
                 <div class="row">
@@ -53,6 +76,10 @@
                   </div>
                   <br>
                   <button class="btn btn-success" (click)="submit()">Sign Up</button>
+                  <span> already registered click here
+                       <button class="btn btn-info btn-sm"
+                        (click)="switch()">sign in</button>
+                    </span>
                   
                 </form>
             </div>

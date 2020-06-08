@@ -8,11 +8,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
   constructor(private fb: FormBuilder ) { }
+  signUp = true
 
   submit(){
     console.log(this.signUpForm.value)
   }
+
+  switch(){
+    this.signUp = false
+  }
+  signIn(){
+    console.log('sign in')
+  }
 signUpForm:FormGroup
+signInForm:FormGroup
   ngOnInit() {
     this.signUpForm = this.fb.group({
       name: ['' , Validators.required],
@@ -22,7 +31,10 @@ signUpForm:FormGroup
       confirmPassword:['' , Validators.required],
       gender:['', Validators.required],
     })
-    
+    this.signInForm = this.fb.group({
+      email:[''],
+      password:['']
+    })
   }
 
 }
