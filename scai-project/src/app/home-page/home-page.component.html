@@ -3,6 +3,7 @@
   style="height: 72px;"
 >
   <h3 style="color: white;">home page</h3>
+
   <h4>
     <a
       routerLinkActive="active-class"
@@ -11,8 +12,14 @@
       >account settings</a
     >
   </h4>
+
   <h4>
-    <button type="button" class="btn btn-danger" (click)="logOut()">
+    <button
+      type="button"
+      style="float: right;"
+      class="btn btn-danger ml-5"
+      (click)="logOut()"
+    >
       log Out
     </button>
   </h4>
