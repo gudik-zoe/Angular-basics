@@ -29,36 +29,43 @@
   <div class="row">
     <div id="first-div" class="col-md-2" style="background-color: lightblue;">
       <li>user's name</li>
-      <li><i class="fa fa-camera"></i>asd</li>
-      <li><i class="fa fa-cutlery"></i>asd</li>
-      <li><i class="fa fa-camera"></i>asd</li>
-      <li><i class="fa fa-cutlery"></i>asd</li>
-      <li><i class="fa fa-camera"></i>asd</li>
-      <li><i class="fa fa-cutlery"></i>asd</li>
-      <li><i class="fa fa-camera"></i>asd</li>
-      <li><i class="fa fa-cutlery"></i>asd</li>
-      <li><i class="fa fa-camera"></i>asd</li>
-      <li><i class="fa fa-cutlery"></i>asd</li>
-      <li><i class="fa fa-camera"></i>asd</li>
-      <li><i class="fa fa-cutlery"></i>asd</li>
+      <li><i class="fa fa-camera"></i>test</li>
+      <li><i class="fa fa-cutlery"></i>test</li>
+      <li><i class="fa fa-camera"></i>test</li>
+      <li><i class="fa fa-cutlery"></i>test</li>
+      <li><i class="fa fa-camera"></i>test</li>
+      <li><i class="fa fa-cutlery"></i>test</li>
+      <li><i class="fa fa-camera"></i>test</li>
+      <li><i class="fa fa-cutlery"></i>test</li>
+      <li><i class="fa fa-camera"></i>test</li>
+      <li><i class="fa fa-cutlery"></i>test</li>
+      <li><i class="fa fa-camera"></i>test</li>
+      <li><i class="fa fa-cutlery"></i>test</li>
     </div>
 
     <div class="col-md-7 mt-3">
+      <h1 style="color: blueviolet;">News Feed</h1>
+      <hr />
       <div *ngFor="let post of posts" class="text-center">
         <img src="{{ post.image }}" width="500" height="300px" />
         <br />
         <div class="row">
-          <div class="col-md-4 ml-4">
-            <span class="ml-3">likes:{{ post.likes }}</span>
+          <div class="col-md-4" style="margin-left: 70px;">
+            <span *ngIf="post.likes > 1" class="font-weight-bold"
+              >likes: {{ post.likes }}</span
+            >
+            <span *ngIf="post.likes === 1" class="font-weight-bold"
+              >like: {{ post.likes }}</span
+            >
           </div>
           <div class="col-md-4">
-            <span *ngIf="post.comments.length > 1"
+            <span class="font-weight-bold" *ngIf="post.comments.length > 1"
               >{{ post.comments.length
               }}<a style="cursor: pointer;" (click)="showComments(post.id)"
                 >comments</a
               ></span
             >
-            <span *ngIf="post.comments.length <= 1"
+            <span class="font-weight-bold" *ngIf="post.comments.length <= 1"
               >{{ post.comments.length
               }}<a style="cursor: pointer;" (click)="showComments(post.id)"
                 >comment</a
