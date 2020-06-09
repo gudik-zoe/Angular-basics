@@ -11,7 +11,7 @@ posts = []
 data
   constructor( private service:PostsService) { }
   likeBtn = false
-  showComment = false
+  
 
   like(id){
     if (this.likeBtn == false){
@@ -24,10 +24,15 @@ data
     
   }
 
+showComments(id){
+  this.service.showComment(id)
+  
+}
+
   comment(id , data){
      this.service.comment(id , data)
-     this.showComment = true
-     this.data = null
+     
+     
   }
 
   ngOnInit() {

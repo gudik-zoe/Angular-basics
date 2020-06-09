@@ -14,7 +14,8 @@ export class LogInComponent implements OnInit {
   signUp = true
 
   submit(){
-    console.log(this.signUpForm.value)
+    // console.log(this.signUpForm.value)
+    localStorage.setItem('user',JSON.stringify(this.signInForm.value))
   }
 
   switch(){
