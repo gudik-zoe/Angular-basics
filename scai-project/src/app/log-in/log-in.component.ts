@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Custome } from './validator';
 import { Router } from '@angular/router';
+import { JsonPipe } from '@angular/common';
+import { Key } from 'protractor';
 
 @Component({
   selector: 'app-log-in',
@@ -12,17 +14,29 @@ export class LogInComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private route:Router ) { }
   signUp = true
+ user
+  signUpfunc(){
+    //  this.user = this.signUpForm.get('name').value
+    localStorage.setItem('key',JSON.stringify(this.signUpForm.value))
+   
+  }
 
-  submit(){
-    // console.log(this.signUpForm.value)
-    localStorage.setItem('user',JSON.stringify(this.signInForm.value))
+  signIn(){
+    let email = this.signInForm.get('email').value
+    let password = this.signInForm.get('password').value
+    if 
+    (email === JSON.parse(localStorage.getItem('key')).email
+     &&
+      password === JSON.parse(localStorage.getItem('key')).password ){
+      console.log('registered')
+      this.route.navigate(['/home-page'])
+    }else {
+      console.log('not registered')
+    }
   }
 
   switch(){
     this.signUp =!this.signUp
-  }
-  signIn(){
-    this.route.navigate(['/home-page'])
   }
 signUpForm:FormGroup
 signInForm:FormGroup
